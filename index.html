@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Lakshmi Travels – Premium Car Rental Since 2017</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+Tamil:wght@400;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-dark:#9B7A2F;
+  --deep:#0A0A14;--deep2:#12121F;--deep3:#1A1A2E;
+  --surface:#1E1E30;--surface2:#252538;
+  --cream:#F5F0E8;--text-muted:#8888AA;
+  --green-acc:#2EC4B6;
+  --radius:16px;
+  --shadow-gold:0 4px 40px rgba(201,168,76,0.25);
+  --shadow-card:0 8px 40px rgba(0,0,0,0.4);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;background:var(--deep);color:var(--cream);overflow-x:hidden;}
+body.tamil-mode{font-family:'Noto Sans Tamil','Outfit',sans-serif;}
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:var(--deep2);}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(10,10,20,0.92);backdrop-filter:blur(18px);border-bottom:1px solid rgba(201,168,76,0.2);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:70px;transition:background .3s;}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:var(--shadow-gold);}
+.nav-logo-text{display:flex;flex-direction:column;line-height:1.1;}
+.nav-logo-name{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;background:linear-gradient(90deg,var(--gold-light),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-logo-sub{font-size:10px;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;}
+.nav-links{display:flex;align-items:center;gap:6px;}
+.nav-links a{color:var(--cream);text-decoration:none;font-size:13px;font-weight:500;padding:8px 14px;border-radius:8px;transition:all .2s;}
+.nav-links a:hover{background:rgba(201,168,76,0.15);color:var(--gold-light);}
+.nav-right{display:flex;align-items:center;gap:10px;}
+.lang-toggle{display:flex;background:var(--surface);border-radius:30px;padding:4px;border:1px solid rgba(201,168,76,0.2);}
+.lang-btn{padding:6px 14px;border-radius:24px;border:none;font-size:12px;font-weight:600;cursor:pointer;transition:all .25s;background:transparent;color:var(--text-muted);letter-spacing:.5px;font-family:'Outfit',sans-serif;}
+.lang-btn.active{background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#fff;box-shadow:0 2px 12px rgba(201,168,76,0.4);}
+.btn-book-nav{background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#fff;border:none;border-radius:8px;padding:9px 20px;font-size:13px;font-weight:600;cursor:pointer;transition:all .25s;box-shadow:0 2px 16px rgba(201,168,76,0.3);font-family:'Outfit',sans-serif;}
+.btn-book-nav:hover{transform:translateY(-1px);box-shadow:var(--shadow-gold);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:6px;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--gold);border-radius:2px;transition:all .3s;}
+.mobile-menu{display:none;position:fixed;top:70px;left:0;right:0;background:rgba(10,10,20,0.97);backdrop-filter:blur(20px);padding:16px;z-index:999;border-bottom:1px solid rgba(201,168,76,0.2);flex-direction:column;gap:6px;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{color:var(--cream);text-decoration:none;font-size:15px;font-weight:500;padding:12px 16px;border-radius:10px;transition:all .2s;}
+.mobile-menu a:hover{background:rgba(201,168,76,0.15);color:var(--gold-light);}
+.mobile-lang-row{display:flex;gap:8px;padding:8px 16px;margin-top:4px;}
+.mobile-lang-btn{flex:1;text-align:center;border-radius:8px;padding:10px 0;font-size:13px;font-weight:600;cursor:pointer;font-family:'Outfit',sans-serif;}
+.mobile-lang-btn.active{background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#fff;border:none;}
+.mobile-lang-btn:not(.active){background:var(--surface2);color:var(--text-muted);border:1px solid rgba(201,168,76,0.2);}
+
+/* ── PAGES ── */
+.page{display:none;padding-top:70px;min-height:100vh;}
+.page.active{display:block;}
+
+/* ── HERO ── */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(ellipse at 20% 50%,rgba(201,168,76,0.08) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(46,196,182,0.05) 0%,transparent 50%),var(--deep);padding:0 24px;}
+.hero-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+.hero-particles span{position:absolute;border-radius:50%;background:rgba(201,168,76,0.4);animation:float-part linear infinite;}
+@keyframes float-part{0%{transform:translateY(100vh) rotate(0deg);opacity:0;}10%{opacity:1;}90%{opacity:1;}100%{transform:translateY(-10vh) rotate(720deg);opacity:0;}}
+.hero-bg-lines{position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 60px,rgba(201,168,76,0.02) 60px,rgba(201,168,76,0.02) 61px);}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:800px;animation:hero-in 1s ease-out;}
+@keyframes hero-in{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);border-radius:30px;padding:8px 20px;font-size:12px;font-weight:600;color:var(--gold-light);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:28px;}
+.hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse-dot 2s infinite;flex-shrink:0;}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(1.4);}}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(42px,7vw,90px);font-weight:900;line-height:1.0;margin-bottom:8px;background:linear-gradient(135deg,var(--cream) 0%,var(--gold-light) 50%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero-title-sub{font-family:'Playfair Display',serif;font-size:clamp(20px,3vw,36px);font-style:italic;color:var(--gold);margin-bottom:24px;}
+.hero-desc{font-size:clamp(14px,1.8vw,18px);color:var(--text-muted);max-width:560px;margin:0 auto 40px;line-height:1.8;font-weight:300;}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+.btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#fff;border:none;border-radius:12px;padding:16px 36px;font-size:15px;font-weight:600;cursor:pointer;transition:all .3s;box-shadow:0 4px 24px rgba(201,168,76,0.4);font-family:'Outfit',sans-serif;}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 40px rgba(201,168,76,0.5);}
+.btn-secondary{background:transparent;color:var(--cream);border:1px solid rgba(255,255,255,0.2);border-radius:12px;padding:16px 36px;font-size:15px;font-weight:500;cursor:pointer;transition:all .3s;font-family:'Outfit',sans-serif;}
+.btn-secondary:hover{border-color:var(--gold);color:var(--gold-light);background:rgba(201,168,76,0.08);}
+.hero-stats{display:flex;justify-content:center;gap:40px;margin-top:60px;flex-wrap:wrap;}
+.hero-stat{text-align:center;}
+.hero-stat-num{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,48px);font-weight:700;color:var(--gold-light);}
+.hero-stat-label{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1.5px;margin-top:4px;}
+.hero-scroll{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--text-muted);font-size:11px;letter-spacing:2px;text-transform:uppercase;animation:scroll-bounce 2s infinite;}
+@keyframes scroll-bounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(8px);}}
+.hero-scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--gold),transparent);}
+
+/* ── DRIVER STRIP ── */
+.driver-strip{background:linear-gradient(135deg,rgba(201,168,76,0.13),rgba(201,168,76,0.04));border-top:1px solid rgba(201,168,76,0.25);border-bottom:1px solid rgba(201,168,76,0.25);padding:24px;}
+.driver-strip-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-around;flex-wrap:wrap;gap:20px;}
+.ds-item{display:flex;align-items:center;gap:14px;flex:1;min-width:220px;}
+.ds-icon{font-size:32px;flex-shrink:0;filter:drop-shadow(0 0 8px rgba(201,168,76,0.4));}
+.ds-title{font-size:14px;font-weight:700;color:var(--gold-light);margin-bottom:3px;}
+.ds-sub{font-size:12px;color:var(--text-muted);line-height:1.5;}
+.ds-div{width:1px;height:48px;background:linear-gradient(to bottom,transparent,rgba(201,168,76,0.3),transparent);flex-shrink:0;}
+
+/* ── SECTION BASE ── */
+.section{padding:80px 24px;}
+.section-inner{max-width:1200px;margin:0 auto;}
+.section-tag{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.section-tag::before{content:'';display:block;width:24px;height:1px;background:var(--gold);}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,52px);font-weight:700;line-height:1.15;margin-bottom:16px;}
+.section-desc{font-size:16px;color:var(--text-muted);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:48px;}
+.gold-text{background:linear-gradient(90deg,var(--gold-light),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+
+/* ── WHY CARDS ── */
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-top:48px;}
+.why-card{background:var(--surface);border:1px solid rgba(201,168,76,0.1);border-radius:var(--radius);padding:32px 28px;transition:all .3s;position:relative;overflow:hidden;}
+.why-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .3s;}
+.why-card:hover{transform:translateY(-4px);border-color:rgba(201,168,76,0.3);box-shadow:var(--shadow-card);}
+.why-card:hover::before{opacity:1;}
+.why-icon{width:52px;height:52px;background:linear-gradient(135deg,rgba(201,168,76,0.15),rgba(201,168,76,0.05));border:1px solid rgba(201,168,76,0.2);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px;}
+.why-card h3{font-size:16px;font-weight:600;margin-bottom:10px;}
+.why-card p{font-size:13px;color:var(--text-muted);line-height:1.7;}
+
+/* ── COVERAGE ── */
+.coverage-section{background:var(--deep2);padding:80px 24px;}
+.states-grid{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px;}
+.state-tag{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid rgba(201,168,76,0.2);border-radius:30px;padding:10px 20px;font-size:14px;font-weight:500;transition:all .25s;}
+.state-tag:hover{background:rgba(201,168,76,0.12);border-color:var(--gold);transform:translateY(-2px);}
+
+/* ── TRIPS ── */
+.trips-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:40px;}
+.trip-card{background:linear-gradient(135deg,var(--surface),var(--surface2));border:1px solid rgba(201,168,76,0.15);border-radius:var(--radius);padding:28px;position:relative;overflow:hidden;transition:all .3s;}
+.trip-card::after{content:'';position:absolute;bottom:0;right:0;width:120px;height:120px;background:radial-gradient(circle,rgba(201,168,76,0.1),transparent);border-radius:50%;}
+.trip-card:hover{transform:translateY(-4px);border-color:rgba(201,168,76,0.35);box-shadow:var(--shadow-card);}
+.trip-route{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+.trip-from,.trip-to{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;}
+.trip-arrow{flex:1;display:flex;align-items:center;color:var(--gold);font-size:20px;}
+.trip-arrow::before,.trip-arrow::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--gold),transparent);}
+.trip-price{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:var(--gold-light);}
+.trip-price span{font-size:14px;color:var(--text-muted);font-family:'Outfit',sans-serif;font-weight:400;}
+.trip-note{display:inline-flex;align-items:center;gap:6px;background:rgba(201,168,76,0.1);border-radius:20px;padding:5px 14px;font-size:12px;color:var(--gold);margin-top:12px;}
+
+/* ── TESTIMONIALS ── */
+.testimonials{padding:80px 24px;background:var(--deep);}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:48px;}
+.testi-card{background:var(--surface);border:1px solid rgba(201,168,76,0.1);border-radius:var(--radius);padding:28px;position:relative;}
+.testi-stars{color:var(--gold);font-size:14px;margin-bottom:16px;letter-spacing:2px;}
+.testi-text{font-size:14px;color:var(--text-muted);line-height:1.8;margin-bottom:20px;font-style:italic;}
+.testi-author{display:flex;align-items:center;gap:12px;}
+.testi-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-dark));display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#fff;flex-shrink:0;}
+.testi-name{font-size:14px;font-weight:600;}
+.testi-loc{font-size:12px;color:var(--text-muted);}
+.quote-mark{position:absolute;top:20px;right:24px;font-size:60px;font-family:'Playfair Display',serif;color:rgba(201,168,76,0.08);line-height:1;}
+
+/* ── CTA BAND ── */
+.cta-band{background:linear-gradient(135deg,rgba(201,168,76,0.12),rgba(201,168,76,0.04));border-top:1px solid rgba(201,168,76,0.2);border-bottom:1px solid rgba(201,168,76,0.2);padding:60px 24px;text-align:center;}
+.cta-band h2{font-family:'Playfair Display',serif;font-size:clamp(24px,3.5vw,40px);margin-bottom:12px;}
+.cta-band p{color:var(--text-muted);margin-bottom:32px;font-size:15px;}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+.btn-call{display:flex;align-items:center;gap:10px;background:rgba(46,196,182,0.12);border:1px solid rgba(46,196,182,0.3);color:var(--green-acc);border-radius:12px;padding:14px 28px;font-size:15px;font-weight:600;cursor:pointer;transition:all .25s;text-decoration:none;font-family:'Outfit',sans-serif;}
+.btn-call:hover{background:rgba(46,196,182,0.2);transform:translateY(-2px);}
+.btn-whatsapp{display:flex;align-items:center;gap:10px;background:rgba(37,211,102,0.12);border:1px solid rgba(37,211,102,0.3);color:#25D366;border-radius:12px;padding:14px 28px;font-size:15px;font-weight:600;cursor:pointer;transition:all .25s;text-decoration:none;font-family:'Outfit',sans-serif;}
+.btn-whatsapp:hover{background:rgba(37,211,102,0.2);transform:translateY(-2px);}
+
+/* ── CARS PAGE ── */
+.cars-hero{background:linear-gradient(180deg,var(--deep2),var(--deep));padding:80px 24px 40px;text-align:center;border-bottom:1px solid rgba(201,168,76,0.1);}
+.cars-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;padding:60px 24px;max-width:1200px;margin:0 auto;}
+.car-card{background:var(--surface);border:1px solid rgba(201,168,76,0.12);border-radius:20px;overflow:hidden;transition:all .35s;}
+.car-card:hover{transform:translateY(-6px);border-color:rgba(201,168,76,0.4);box-shadow:0 20px 60px rgba(0,0,0,0.5);}
+
+/* IMAGE SLIDESHOW */
+.car-slider{position:relative;height:210px;background:var(--surface2);overflow:hidden;}
+.car-slides{display:flex;height:100%;transition:transform .4s ease;}
+.car-slide{min-width:100%;height:100%;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.car-slide img{width:100%;height:100%;object-fit:cover;display:block;}
+.car-slide-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;background:linear-gradient(135deg,var(--deep3),var(--surface2));gap:10px;}
+.car-slide-placeholder .car-emoji{font-size:70px;line-height:1;}
+.car-slide-placeholder .placeholder-text{font-size:11px;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;}
+.car-slide-placeholder .img-hint{font-size:10px;color:rgba(201,168,76,0.5);margin-top:2px;}
+/* Arrow buttons */
+.slider-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.55);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light); border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;z-index:5;transition:all .2s;border:none;}
+.slider-btn:hover{background:rgba(201,168,76,0.3);}
+.slider-btn.prev{left:8px;}
+.slider-btn.next{right:8px;}
+/* Dots */
+.slider-dots{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:5;}
+.slider-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.35);cursor:pointer;transition:all .2s;border:none;padding:0;}
+.slider-dot.active{background:var(--gold);width:16px;border-radius:3px;}
+/* Badge */
+.car-badge{position:absolute;top:12px;right:12px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#fff;border-radius:20px;padding:4px 12px;font-size:11px;font-weight:700;letter-spacing:.5px;z-index:5;}
+
+.car-info{padding:22px;}
+.car-name{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;margin-bottom:4px;}
+.car-type{font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px;}
+.car-rate{display:flex;align-items:baseline;gap:6px;margin-bottom:14px;}
+.car-rate-num{font-family:'Playfair Display',serif;font-size:34px;font-weight:700;color:var(--gold-light);}
+.car-rate-unit{font-size:14px;color:var(--text-muted);}
+.car-features{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px;}
+.car-feat{display:flex;align-items:center;gap:5px;background:var(--deep3);border-radius:8px;padding:5px 10px;font-size:12px;color:var(--text-muted);}
+.car-feat.gold{color:var(--gold);border:1px solid rgba(201,168,76,0.2);}
+.car-btn{width:100%;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#fff;border:none;border-radius:10px;padding:12px;font-size:14px;font-weight:600;cursor:pointer;transition:all .25s;font-family:'Outfit',sans-serif;}
+.car-btn:hover{box-shadow:0 4px 20px rgba(201,168,76,0.4);transform:translateY(-1px);}
+
+/* Extra services */
+.extra-services{max-width:1200px;margin:0 auto 60px;padding:0 24px;}
+.extra-card{background:linear-gradient(135deg,var(--surface),var(--deep3));border:1px solid rgba(201,168,76,0.15);border-radius:var(--radius);padding:28px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;margin-bottom:20px;}
+.extra-info h3{font-family:'Playfair Display',serif;font-size:22px;margin-bottom:8px;}
+.extra-info p{color:var(--text-muted);font-size:14px;line-height:1.6;}
+.wait-charge{background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.25);border-radius:12px;padding:16px 24px;text-align:center;min-width:160px;}
+.wait-charge-num{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:var(--gold-light);}
+.wait-charge-label{font-size:12px;color:var(--text-muted);margin-top:4px;}
+
+/* ── BOOKING PAGE ── */
+.booking-page{padding:90px 24px 60px;max-width:760px;margin:0 auto;}
+.booking-title{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,44px);font-weight:700;margin-bottom:8px;text-align:center;}
+.booking-sub{text-align:center;color:var(--text-muted);margin-bottom:40px;font-size:15px;}
+.booking-form{background:var(--surface);border:1px solid rgba(201,168,76,0.15);border-radius:24px;padding:36px 36px 28px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;}
+.form-row.full{grid-template-columns:1fr;}
+.form-group{display:flex;flex-direction:column;gap:7px;}
+.form-label{font-size:11px;font-weight:600;color:var(--gold-light);letter-spacing:1px;text-transform:uppercase;}
+.form-input,.form-select,.form-textarea{background:var(--deep3);border:1px solid rgba(201,168,76,0.15);border-radius:10px;padding:12px 14px;color:var(--cream);font-size:14px;font-family:'Outfit',sans-serif;transition:all .25s;outline:none;width:100%;}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,0.12);}
+.form-select option{background:var(--deep3);}
+.form-textarea{resize:vertical;min-height:90px;}
+.form-section-title{font-family:'Playfair Display',serif;font-size:17px;font-weight:600;color:var(--cream);margin:24px 0 14px;padding-bottom:10px;border-bottom:1px solid rgba(201,168,76,0.1);display:flex;align-items:center;gap:10px;}
+.submit-btn{width:100%;margin-top:24px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#fff;border:none;border-radius:12px;padding:17px;font-size:16px;font-weight:600;cursor:pointer;transition:all .3s;font-family:'Outfit',sans-serif;box-shadow:0 4px 24px rgba(201,168,76,0.3);}
+.submit-btn:hover{transform:translateY(-2px);box-shadow:0 8px 40px rgba(201,168,76,0.5);}
+.submit-btn:disabled{opacity:.6;cursor:not-allowed;transform:none;}
+/* ── FIX: booking note stays inside form ── */
+.booking-note{display:flex;align-items:flex-start;gap:10px;background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.15);border-radius:10px;padding:14px 16px;margin-top:16px;font-size:12.5px;color:var(--text-muted);line-height:1.6;width:100%;}
+.booking-note .note-icon{font-size:18px;flex-shrink:0;margin-top:1px;}
+
+/* ── CONTACT PAGE ── */
+.contact-page{padding:90px 24px 60px;max-width:1100px;margin:0 auto;}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:40px;}
+.contact-info-card{background:var(--surface);border:1px solid rgba(201,168,76,0.15);border-radius:20px;padding:36px;}
+.contact-item{display:flex;align-items:flex-start;gap:16px;margin-bottom:24px;}
+.contact-icon{width:46px;height:46px;flex-shrink:0;background:linear-gradient(135deg,rgba(201,168,76,0.15),rgba(201,168,76,0.05));border:1px solid rgba(201,168,76,0.2);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;}
+.contact-label{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:5px;font-weight:600;}
+.contact-value{font-size:16px;font-weight:600;}
+.contact-value a{color:var(--gold-light);text-decoration:none;}
+.contact-value a:hover{color:var(--gold);}
+.contact-action-btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px;}
+.btn-contact-action{display:flex;align-items:center;gap:8px;border-radius:10px;padding:11px 18px;font-size:13px;font-weight:600;cursor:pointer;transition:all .25s;text-decoration:none;font-family:'Outfit',sans-serif;}
+.btn-contact-phone{background:rgba(46,196,182,0.12);border:1px solid rgba(46,196,182,0.3);color:var(--green-acc);}
+.btn-contact-phone:hover{background:rgba(46,196,182,0.22);}
+.btn-contact-wa{background:rgba(37,211,102,0.12);border:1px solid rgba(37,211,102,0.3);color:#25D366;}
+.btn-contact-wa:hover{background:rgba(37,211,102,0.22);}
+.btn-contact-email{background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);}
+.btn-contact-email:hover{background:rgba(201,168,76,0.22);}
+.contact-map-placeholder{background:var(--surface);border:1px solid rgba(201,168,76,0.15);border-radius:20px;padding:32px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:14px;min-height:260px;}
+.contact-map-placeholder .map-icon{font-size:52px;}
+.contact-map-placeholder h3{font-family:'Playfair Display',serif;font-size:20px;}
+.contact-map-placeholder p{color:var(--text-muted);font-size:13px;line-height:1.7;}
+.contact-since{margin-top:20px;background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(201,168,76,0.02));border:1px solid rgba(201,168,76,0.15);border-radius:16px;padding:24px 28px;text-align:center;}
+.contact-since p{font-size:14px;color:var(--text-muted);line-height:1.8;}
+.contact-since strong{color:var(--gold-light);}
+
+/* ── FOOTER ── */
+footer{background:var(--deep2);border-top:1px solid rgba(201,168,76,0.15);padding:48px 24px 24px;text-align:center;}
+.footer-logo{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;background:linear-gradient(90deg,var(--gold-light),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px;}
+.footer-tagline{font-size:12px;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:28px;}
+.footer-links{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:28px;}
+.footer-links a{color:var(--text-muted);text-decoration:none;font-size:13px;transition:color .2s;}
+.footer-links a:hover{color:var(--gold-light);}
+.footer-divider{height:1px;background:rgba(201,168,76,0.1);margin-bottom:20px;}
+.footer-copy{font-size:12px;color:var(--text-muted);}
+
+/* ── FLOATING WA ── */
+.float-wa{position:fixed;bottom:90px;right:20px;width:54px;height:54px;background:linear-gradient(135deg,#25D366,#128C7E);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,0.4);z-index:800;transition:all .3s;animation:wa-pulse 3s infinite;}
+@keyframes wa-pulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,0.4);}50%{box-shadow:0 4px 32px rgba(37,211,102,0.7),0 0 0 8px rgba(37,211,102,0.1);}}
+.float-wa:hover{transform:scale(1.1);}
+
+/* ── MOBILE BOTTOM NAV ── */
+.mobile-bottom-nav{display:none;}
+
+/* ── SUCCESS OVERLAY ── */
+.success-overlay{display:none;position:fixed;inset:0;background:rgba(10,10,20,0.9);backdrop-filter:blur(10px);z-index:2000;align-items:center;justify-content:center;}
+.success-overlay.show{display:flex;}
+.success-box{background:var(--surface);border:1px solid rgba(201,168,76,0.3);border-radius:24px;padding:44px 36px;text-align:center;max-width:420px;margin:0 16px;animation:pop .4s cubic-bezier(.34,1.56,.64,1);}
+@keyframes pop{from{transform:scale(.8);opacity:0;}to{transform:scale(1);opacity:1;}}
+.success-icon{font-size:56px;margin-bottom:18px;}
+.success-box h3{font-family:'Playfair Display',serif;font-size:26px;margin-bottom:12px;color:var(--gold-light);}
+.success-box p{color:var(--text-muted);font-size:14px;line-height:1.8;margin-bottom:24px;}
+.success-close{background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#fff;border:none;border-radius:10px;padding:12px 32px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Outfit',sans-serif;}
+
+/* ── SPINNER ── */
+.spinner{display:inline-block;width:18px;height:18px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .8s linear infinite;vertical-align:middle;margin-right:8px;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* ══════════════ RESPONSIVE ══════════════ */
+@media(max-width:900px){
+  .cars-grid{grid-template-columns:repeat(2,1fr);}
+  .contact-grid{grid-template-columns:1fr;}
+  .testi-grid{grid-template-columns:1fr 1fr;}
+  .why-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:768px){
+  nav{padding:0 14px;height:60px;}
+  .nav-links,.btn-book-nav{display:none;}
+  .hamburger{display:flex;}
+  .nav-logo-icon{width:36px;height:36px;font-size:16px;}
+  .nav-logo-name{font-size:15px;}
+  .nav-logo-sub{font-size:9px;}
+  .lang-toggle{padding:3px;}
+  .lang-btn{padding:5px 10px;font-size:11px;}
+  .mobile-menu{top:60px;}
+  .page{padding-top:60px;}
+  /* hero */
+  .hero{padding:0 16px;}
+  .hero-badge{font-size:10px;padding:6px 14px;margin-bottom:18px;}
+  .hero-title{font-size:clamp(32px,9vw,50px);}
+  .hero-title-sub{font-size:clamp(16px,5vw,22px);margin-bottom:14px;}
+  .hero-desc{font-size:14px;margin-bottom:24px;}
+  .hero-btns{flex-direction:column;align-items:center;gap:12px;width:100%;}
+  .btn-primary,.btn-secondary{width:100%;max-width:300px;padding:14px 20px;font-size:14px;}
+  .hero-stats{gap:14px;margin-top:36px;}
+  .hero-stat-num{font-size:clamp(22px,6vw,32px);}
+  .hero-stat-label{font-size:9px;letter-spacing:1px;}
+  .hero-scroll{display:none;}
+  /* driver strip */
+  .driver-strip{padding:18px 14px;}
+  .driver-strip-inner{gap:14px;}
+  .ds-item{min-width:100%;flex:unset;}
+  .ds-div{width:100%;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,0.3),transparent);}
+  .ds-icon{font-size:26px;}
+  /* sections */
+  .section{padding:50px 16px;}
+  .coverage-section{padding:50px 16px;}
+  .testimonials{padding:50px 16px;}
+  .section-title{font-size:clamp(22px,6vw,32px);}
+  .section-desc{font-size:14px;margin-bottom:28px;}
+  /* why */
+  .why-grid{grid-template-columns:1fr;gap:14px;margin-top:24px;}
+  .why-card{padding:22px 18px;}
+  /* states */
+  .states-grid{gap:8px;margin-top:20px;}
+  .state-tag{font-size:12px;padding:8px 12px;}
+  /* trips */
+  .trips-grid{grid-template-columns:1fr;gap:14px;margin-top:20px;}
+  .trip-price{font-size:26px;}
+  /* testi */
+  .testi-grid{grid-template-columns:1fr;gap:14px;margin-top:24px;}
+  /* cta */
+  .cta-band{padding:40px 16px;}
+  .cta-btns{flex-direction:column;align-items:center;gap:10px;}
+  .btn-call,.btn-whatsapp{width:100%;max-width:300px;justify-content:center;}
+  /* cars */
+  .cars-hero{padding:68px 16px 28px;}
+  .cars-grid{grid-template-columns:1fr;padding:28px 16px;gap:18px;}
+  .extra-services{padding:0 16px;margin-bottom:36px;}
+  .extra-card{flex-direction:column;padding:20px 16px;}
+  .extra-info h3{font-size:18px;}
+  .wait-charge{width:100%;min-width:unset;}
+  /* booking */
+  .booking-page{padding:72px 14px 80px;}
+  .booking-form{padding:22px 16px 20px;border-radius:14px;}
+  .form-row{grid-template-columns:1fr;gap:12px;margin-bottom:12px;}
+  .form-row.full{margin-bottom:12px;}
+  .form-section-title{font-size:15px;margin:18px 0 12px;}
+  .submit-btn{padding:15px;font-size:15px;margin-top:18px;}
+  .booking-note{font-size:12px;padding:12px 14px;}
+  /* contact */
+  .contact-page{padding:72px 16px 90px;}
+  .contact-grid{grid-template-columns:1fr;gap:18px;margin-top:24px;}
+  .contact-info-card{padding:22px 16px;}
+  .contact-icon{width:40px;height:40px;font-size:17px;}
+  .contact-value{font-size:14px;}
+  .contact-action-btns{gap:8px;}
+  .btn-contact-action{padding:10px 14px;font-size:12px;}
+  .contact-map-placeholder{padding:22px 16px;min-height:200px;}
+  .contact-since{padding:20px 16px;}
+  /* footer */
+  footer{padding:32px 16px calc(62px + 16px);}
+  .footer-logo{font-size:22px;}
+  /* float wa */
+  .float-wa{bottom:74px;right:14px;width:48px;height:48px;font-size:22px;}
+  /* bottom nav */
+  .mobile-bottom-nav{display:flex;position:fixed;bottom:0;left:0;right:0;background:rgba(10,10,20,0.97);backdrop-filter:blur(20px);border-top:1px solid rgba(201,168,76,0.2);z-index:900;height:60px;padding:0 4px;padding-bottom:env(safe-area-inset-bottom,0px);}
+  .mbn-btn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;background:none;border:none;cursor:pointer;color:var(--text-muted);padding:6px 4px;border-radius:10px;transition:all .2s;font-family:'Outfit',sans-serif;}
+  .mbn-btn.active{color:var(--gold-light);}
+  .mbn-btn.mbn-book{background:linear-gradient(135deg,rgba(201,168,76,0.15),rgba(201,168,76,0.05));border:1px solid rgba(201,168,76,0.2);border-radius:12px;margin:6px 3px;color:var(--gold);}
+  .mbn-btn.mbn-book.active{background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#fff;border-color:transparent;}
+  .mbn-icon{font-size:19px;line-height:1;}
+  .mbn-label{font-size:10px;font-weight:600;}
+}
+@media(max-width:400px){
+  .hero-title{font-size:30px;}
+  .hero-stats{gap:10px;}
+  .why-grid{gap:10px;}
+  .nav-logo-sub{display:none;}
+  .contact-action-btns{flex-direction:column;}
+  .btn-contact-action{width:100%;justify-content:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a class="nav-logo" href="#" onclick="showPage('home');return false;">
+    <div class="nav-logo-icon">🚗</div>
+    <div class="nav-logo-text">
+      <span class="nav-logo-name" data-en="Lakshmi Travels" data-ta="லக்ஷ்மி டிராவல்ஸ்">Lakshmi Travels</span>
+      <span class="nav-logo-sub" data-en="Since 2017" data-ta="2017 முதல்">Since 2017</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#" onclick="showPage('home');return false;" data-en="Home" data-ta="முகப்பு">Home</a>
+    <a href="#" onclick="showPage('cars');return false;" data-en="Our Fleet" data-ta="வாகன தொகுப்பு">Our Fleet</a>
+    <a href="#" onclick="showPage('booking');return false;" data-en="Book Now" data-ta="இப்போது பதிவு செய்">Book Now</a>
+    <a href="#" onclick="showPage('contact');return false;" data-en="Contact" data-ta="தொடர்பு">Contact</a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btnEn" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" id="btnTa" onclick="setLang('ta')">தமிழ்</button>
+    </div>
+    <button class="btn-book-nav" onclick="showPage('booking')" data-en="Book a Ride" data-ta="பயணம் பதிவு செய்">Book a Ride</button>
+  </div>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#" onclick="showPage('home');closeMenu();return false;" data-en="🏠  Home" data-ta="🏠  முகப்பு">🏠  Home</a>
+  <a href="#" onclick="showPage('cars');closeMenu();return false;" data-en="🚗  Our Fleet" data-ta="🚗  வாகன தொகுப்பு">🚗  Our Fleet</a>
+  <a href="#" onclick="showPage('booking');closeMenu();return false;" data-en="📅  Book Now" data-ta="📅  இப்போது பதிவு செய்">📅  Book Now</a>
+  <a href="#" onclick="showPage('contact');closeMenu();return false;" data-en="📞  Contact" data-ta="📞  தொடர்பு">📞  Contact</a>
+  <div class="mobile-lang-row">
+    <button class="mobile-lang-btn active" id="btnEnM" onclick="setLang('en')">EN</button>
+    <button class="mobile-lang-btn" id="btnTaM" onclick="setLang('ta')">தமிழ்</button>
+  </div>
+</div>
+
+<!-- ═══════════════════ HOME PAGE ═══════════════════ -->
+<div class="page active" id="page-home">
+
+  <section class="hero">
+    <div class="hero-bg-lines"></div>
+    <div class="hero-particles" id="particles"></div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        <span data-en="Trusted Since 2017 · 5000+ Happy Families" data-ta="2017 முதல் நம்பகமானது · 5000+ மகிழ்ந்த குடும்பங்கள்">Trusted Since 2017 · 5000+ Happy Families</span>
+      </div>
+      <div class="hero-title" data-en="Lakshmi Travels" data-ta="லக்ஷ்மி டிராவல்ஸ்">Lakshmi Travels</div>
+      <div class="hero-title-sub" data-en="Your Journey, Our Pride" data-ta="உங்கள் பயணம், எங்கள் பெருமை">Your Journey, Our Pride</div>
+      <p class="hero-desc" data-en="Trusted by 5000+ happy families since 2017. Attaching drivers available 24/7 for all vehicles — experienced, reliable & always on time. Covering Tamil Nadu, Kerala, Karnataka, Andhra &amp; Puducherry." data-ta="2017 முதல் 5000+ மகிழ்ந்த குடும்பங்களால் நம்பகமானது. அனைத்து வாகனங்களுக்கும் 24/7 ஆக்டிங் ஓட்டுனர்கள் கிடைக்கும். தமிழ்நாடு, கேரளா, கர்நாடகா, ஆந்திரா மற்றும் புதுச்சேரி.">Trusted by 5000+ happy families since 2017. Attaching drivers available 24/7 for all vehicles — experienced, reliable &amp; always on time. Covering Tamil Nadu, Kerala, Karnataka, Andhra &amp; Puducherry.</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="showPage('booking')" data-en="Book Your Ride" data-ta="உங்கள் பயணத்தை பதிவு செய்யுங்கள்">Book Your Ride</button>
+        <button class="btn-secondary" onclick="showPage('cars')" data-en="Explore Fleet" data-ta="வாகனங்களை காண்க">Explore Fleet</button>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="hero-stat-num">5000+</div><div class="hero-stat-label" data-en="Happy Families" data-ta="மகிழ்ந்த குடும்பங்கள்">Happy Families</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">8+</div><div class="hero-stat-label" data-en="Years of Service" data-ta="சேவை ஆண்டுகள்">Years of Service</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">24/7</div><div class="hero-stat-label" data-en="Attaching Drivers" data-ta="ஆக்டிங் ஓட்டுனர்கள்">Attaching Drivers</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">5</div><div class="hero-stat-label" data-en="States Covered" data-ta="மாநிலங்கள் உள்ளடக்கம்">States Covered</div></div>
+      </div>
+    </div>
+    <div class="hero-scroll"><div class="hero-scroll-line"></div><span data-en="Scroll" data-ta="கீழே">Scroll</span></div>
+  </section>
+
+  <!-- DRIVER STRIP -->
+  <div class="driver-strip">
+    <div class="driver-strip-inner">
+      <div class="ds-item"><span class="ds-icon">🧑‍✈️</span><div><div class="ds-title" data-en="Attaching Drivers Available" data-ta="ஆக்டிங் ஓட்டுனர்கள் கிடைக்கும்">Attaching Drivers Available</div><div class="ds-sub" data-en="For all vehicles — WagonR, Dzire, Ertiga, Ecco &amp; more" data-ta="அனைத்து வாகனங்களுக்கும் — WagonR, Dzire, Ertiga, Ecco மற்றும் மேலும்">For all vehicles — WagonR, Dzire, Ertiga, Ecco &amp; more</div></div></div>
+      <div class="ds-div"></div>
+      <div class="ds-item"><span class="ds-icon">⏰</span><div><div class="ds-title" data-en="24 Hours · 7 Days a Week" data-ta="24 மணி நேரம் · வாரம் 7 நாட்கள்">24 Hours · 7 Days a Week</div><div class="ds-sub" data-en="No matter the hour — our drivers are always ready" data-ta="எந்த நேரமானாலும் — எங்கள் ஓட்டுனர்கள் எப்போதும் தயார்">No matter the hour — our drivers are always ready</div></div></div>
+      <div class="ds-div"></div>
+      <div class="ds-item"><span class="ds-icon">✅</span><div><div class="ds-title" data-en="Experienced &amp; Verified" data-ta="அனுபவமிக்க மற்றும் சரிபார்க்கப்பட்ட">Experienced &amp; Verified</div><div class="ds-sub" data-en="All drivers are licensed, trained &amp; background-checked" data-ta="அனைத்து ஓட்டுனர்களும் உரிமம் பெற்று, பயிற்சி பெற்றவர்கள்">All drivers are licensed, trained &amp; background-checked</div></div></div>
+    </div>
+  </div>
+
+  <!-- WHY US -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-tag" data-en="Why Choose Us" data-ta="ஏன் எங்களை தேர்வு செய்ய வேண்டும்">Why Choose Us</div>
+      <h2 class="section-title" data-en="Travel with <span class='gold-text'>Confidence</span>" data-ta="<span class='gold-text'>நம்பிக்கையுடன்</span> பயணிக்கவும்">Travel with <span class="gold-text">Confidence</span></h2>
+      <p class="section-desc" data-en="Every trip is a promise of safety, comfort, and reliability. We go beyond driving — we deliver experiences." data-ta="ஒவ்வொரு பயணமும் பாதுகாப்பு, வசதி மற்றும் நம்பகத்தன்மையின் வாக்குறுதி.">Every trip is a promise of safety, comfort, and reliability. We go beyond driving — we deliver experiences.</p>
+      <div class="why-grid">
+        <div class="why-card"><div class="why-icon">🏅</div><h3 data-en="Since 2017" data-ta="2017 முதல்">Since 2017</h3><p data-en="Over 8 years of trusted service with thousands of delighted customers across South India." data-ta="தென் இந்தியா முழுவதும் ஆயிரக்கணக்கான வாடிக்கையாளர்களுடன் 8+ ஆண்டுகள் நம்பகமான சேவை.">Over 8 years of trusted service with thousands of delighted customers across South India.</p></div>
+        <div class="why-card"><div class="why-icon">🧑‍✈️</div><h3 data-en="Expert Attaching Drivers" data-ta="நிபுணர் ஆக்டிங் ஓட்டுனர்கள்">Expert Attaching Drivers</h3><p data-en="We provide attaching (acting) drivers for all vehicles — licensed, experienced, and trained for both city rides and long-distance trips." data-ta="அனைத்து வாகனங்களுக்கும் ஆக்டிங் ஓட்டுனர்களை வழங்குகிறோம் — உரிமம் பெற்று, அனுபவமிக்கவர்கள்.">We provide attaching (acting) drivers for all vehicles — licensed, experienced, and trained for both city rides and long-distance trips.</p></div>
+        <div class="why-card"><div class="why-icon">🕐</div><h3 data-en="Attaching Drivers 24/7" data-ta="24/7 ஆக்டிங் ஓட்டுனர்கள்">Attaching Drivers 24/7</h3><p data-en="Round-the-clock driver availability for all vehicles. Early morning airport runs, late-night travel — our drivers are always on standby." data-ta="அனைத்து வாகனங்களுக்கும் இரவு பகலாக ஓட்டுனர்கள் கிடைக்கும். அதிகாலை விமான நிலையம், இரவு பயணம் — எப்போதும் தயார்.">Round-the-clock driver availability for all vehicles. Early morning airport runs, late-night travel — our drivers are always on standby.</p></div>
+        <div class="why-card"><div class="why-icon">🗺️</div><h3 data-en="Wide Coverage" data-ta="விரிந்த சேவை பரப்பு">Wide Coverage</h3><p data-en="We cover all of Tamil Nadu and extend services to Kerala, Karnataka, Andhra Pradesh &amp; Puducherry." data-ta="தமிழ்நாடு முழுவதும் மற்றும் கேரளா, கர்நாடகா, ஆந்திரப்பிரதேசம் மற்றும் புதுச்சேரி.">We cover all of Tamil Nadu and extend services to Kerala, Karnataka, Andhra Pradesh &amp; Puducherry.</p></div>
+        <div class="why-card"><div class="why-icon">❄️</div><h3 data-en="AC &amp; Non-AC" data-ta="AC மற்றும் AC இல்லாத">AC &amp; Non-AC</h3><p data-en="Choose well-maintained AC or non-AC vehicles based on your comfort and budget." data-ta="உங்கள் வசதி மற்றும் பட்ஜெட்டின் அடிப்படையில் AC அல்லது AC இல்லாத வாகனங்களை தேர்ந்தெடுங்கள்.">Choose well-maintained AC or non-AC vehicles based on your comfort and budget.</p></div>
+        <div class="why-card"><div class="why-icon">💎</div><h3 data-en="Transparent Pricing" data-ta="வெளிப்படையான விலை">Transparent Pricing</h3><p data-en="No hidden charges. Clear per-km rates, toll fees communicated upfront. What we quote is what you pay." data-ta="மறைமுக கட்டணங்கள் இல்லை. தெளிவான கிலோமீட்டர் கட்டணங்கள். நாங்கள் சொல்வதே நீங்கள் செலுத்துவது.">No hidden charges. Clear per-km rates, toll fees communicated upfront. What we quote is what you pay.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COVERAGE -->
+  <section class="coverage-section">
+    <div class="section-inner">
+      <div class="section-tag" data-en="Our Service Area" data-ta="எங்கள் சேவை பகுதி">Our Service Area</div>
+      <h2 class="section-title" data-en="We Travel <span class='gold-text'>Everywhere</span>" data-ta="நாங்கள் <span class='gold-text'>எங்கும்</span> பயணிக்கிறோம்">We Travel <span class="gold-text">Everywhere</span></h2>
+      <p class="section-desc" data-en="From the beaches of Tamil Nadu to the hills of Kerala — we cover it all with ease." data-ta="தமிழ்நாட்டின் கடற்கரைகளிலிருந்து கேரளாவின் மலைகள் வரை — நாங்கள் அனைத்தையும் உள்ளடக்குகிறோம்.">From the beaches of Tamil Nadu to the hills of Kerala — we cover it all with ease.</p>
+      <div class="states-grid">
+        <div class="state-tag"><span>🌟</span><span data-en="Tamil Nadu (Full Coverage)" data-ta="தமிழ்நாடு (முழு உள்ளடக்கம்)">Tamil Nadu (Full Coverage)</span></div>
+        <div class="state-tag"><span>🌿</span><span data-en="Kerala" data-ta="கேரளா">Kerala</span></div>
+        <div class="state-tag"><span>🏔️</span><span data-en="Karnataka" data-ta="கர்நாடகா">Karnataka</span></div>
+        <div class="state-tag"><span>🌊</span><span data-en="Andhra Pradesh" data-ta="ஆந்திரப்பிரதேசம்">Andhra Pradesh</span></div>
+        <div class="state-tag"><span>🏖️</span><span data-en="Puducherry" data-ta="புதுச்சேரி">Puducherry</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FREQUENT TRIPS -->
+  <section class="section" style="background:var(--deep2);">
+    <div class="section-inner">
+      <div class="section-tag" data-en="Popular Routes" data-ta="பிரபலமான வழிகள்">Popular Routes</div>
+      <h2 class="section-title" data-en="Frequent <span class='gold-text'>Trips</span>" data-ta="அடிக்கடி செய்யும் <span class='gold-text'>பயணங்கள்</span>">Frequent <span class="gold-text">Trips</span></h2>
+      <p class="section-desc" data-en="Fixed-price drop services for our most popular routes. No meter, no surprises." data-ta="எங்கள் மிகவும் பிரபலமான வழிகளுக்கான நிலையான விலை சேவைகள். மீட்டர் இல்லை, ஆச்சர்யங்கள் இல்லை.">Fixed-price drop services for our most popular routes. No meter, no surprises.</p>
+      <div class="trips-grid">
+        <div class="trip-card">
+          <div class="trip-route"><div class="trip-from" data-en="Velur" data-ta="வேலூர்">Velur</div><div class="trip-arrow">→</div><div class="trip-to" data-en="Karur" data-ta="கரூர்">Karur</div></div>
+          <div class="trip-price">₹1,200 <span data-en="flat" data-ta="நிலையான">flat</span></div>
+          <div class="trip-note">🎯 <span data-en="Drop Only – No Return" data-ta="வருகை மட்டும் – திரும்புதல் இல்லை">Drop Only – No Return</span></div>
+        </div>
+        <div class="trip-card">
+          <div class="trip-route"><div class="trip-from" data-en="Velur" data-ta="வேலூர்">Velur</div><div class="trip-arrow">→</div><div class="trip-to" data-en="Namakkal" data-ta="நாமக்கல்">Namakkal</div></div>
+          <div class="trip-price">₹1,300 <span>+ <span data-en="toll" data-ta="சுங்கக்கட்டணம்">toll</span></span></div>
+          <div class="trip-note">🎯 <span data-en="Drop Only – Toll Extra" data-ta="வருகை மட்டும் – சுங்கக்கட்டணம் கூடுதல்">Drop Only – Toll Extra</span></div>
+        </div>
+      </div>
+      <div class="booking-note" style="max-width:680px;margin-top:20px;">
+        <span class="note-icon">💡</span>
+        <span data-en="Need a custom route? We can arrange any trip across Tamil Nadu and neighboring states. Call us for a quote!" data-ta="தனிப்பயன் பாதை வேண்டுமா? தமிழ்நாடு மற்றும் அண்டை மாநிலங்களில் எந்த பயணத்தையும் ஏற்பாடு செய்யலாம்.">Need a custom route? We can arrange any trip across Tamil Nadu and neighboring states. Call us for a quote!</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="section-inner">
+      <div class="section-tag" data-en="Customer Love" data-ta="வாடிக்கையாளர் அன்பு">Customer Love</div>
+      <h2 class="section-title" data-en="What Our <span class='gold-text'>Families Say</span>" data-ta="எங்கள் <span class='gold-text'>குடும்பங்கள்</span> என்ன சொல்கிறார்கள்">What Our <span class="gold-text">Families Say</span></h2>
+      <div class="testi-grid">
+        <div class="testi-card"><div class="quote-mark">"</div><div class="testi-stars">★★★★★</div><p class="testi-text" data-en='"Very professional service! Driver was on time, car was clean and AC was excellent. Traveled from Velur to Coimbatore without any issues."' data-ta='"மிகவும் தொழில்முறை சேவை! ஓட்டுனர் சரியான நேரத்தில் வந்தார், கார் சுத்தமாக இருந்தது. வேலூரிலிருந்து கோயம்புத்தூர் வரை சிறப்பாக பயணித்தோம்."'>"Very professional service! Driver was on time, car was clean and AC was excellent. Traveled from Velur to Coimbatore without any issues."</p><div class="testi-author"><div class="testi-avatar">R</div><div><div class="testi-name">Rajesh Kumar</div><div class="testi-loc" data-en="Velur, Tamil Nadu" data-ta="வேலூர், தமிழ்நாடு">Velur, Tamil Nadu</div></div></div></div>
+        <div class="testi-card"><div class="quote-mark">"</div><div class="testi-stars">★★★★★</div><p class="testi-text" data-en='"Used Lakshmi Travels for our family trip to Ooty. The driver was very careful and courteous. Will definitely use again!"' data-ta='"ஊட்டிக்கு எங்கள் குடும்பப் பயணத்திற்கு லக்ஷ்மி டிராவல்ஸை பயன்படுத்தினோம். மிகவும் சிறப்பான சேவை. மீண்டும் நிச்சயமாக பயன்படுத்துவோம்!"'>"Used Lakshmi Travels for our family trip to Ooty. The driver was very careful and courteous. Will definitely use again!"</p><div class="testi-author"><div class="testi-avatar">P</div><div><div class="testi-name">Priya Suresh</div><div class="testi-loc" data-en="Namakkal, Tamil Nadu" data-ta="நாமக்கல், தமிழ்நாடு">Namakkal, Tamil Nadu</div></div></div></div>
+        <div class="testi-card"><div class="quote-mark">"</div><div class="testi-stars">★★★★★</div><p class="testi-text" data-en='"Best cab service in the area. Booked an Ertiga for 8 of us, very comfortable ride to Madurai. Price was fair and driver was excellent."' data-ta='"பகுதியில் சிறந்த டாக்சி சேவை. எங்கள் 8 பேருக்கு எர்டிகாவை பதிவு செய்தோம். விலை நியாயமாக இருந்தது."'>"Best cab service in the area. Booked an Ertiga for 8 of us, very comfortable ride to Madurai. Price was fair and driver was excellent."</p><div class="testi-author"><div class="testi-avatar">M</div><div><div class="testi-name">Murugan Pillai</div><div class="testi-loc" data-en="Karur, Tamil Nadu" data-ta="கரூர், தமிழ்நாடு">Karur, Tamil Nadu</div></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <div class="cta-band">
+    <h2 data-en="Ready to <span class='gold-text'>Hit the Road?</span>" data-ta="<span class='gold-text'>பயணம் தொடங்க</span> தயாரா?">Ready to <span class="gold-text">Hit the Road?</span></h2>
+    <p data-en="Book in advance or call us directly. We're always just a call away." data-ta="முன்கூட்டியே பதிவு செய்யுங்கள் அல்லது நேரடியாக அழைக்கவும்.">Book in advance or call us directly. We're always just a call away.</p>
+    <div class="cta-btns">
+      <a href="tel:9025515155" class="btn-call">📞 9025515155</a>
+      <a href="tel:7339173311" class="btn-call">📞 7339173311</a>
+      <a href="https://wa.me/918524859711" target="_blank" class="btn-whatsapp">💬 <span data-en="WhatsApp Us" data-ta="WhatsApp செய்யுங்கள்">WhatsApp Us</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ CARS PAGE ═══════════════════ -->
+<div class="page" id="page-cars">
+  <div class="cars-hero">
+    <div class="section-tag" style="justify-content:center;" data-en="Our Fleet" data-ta="எங்கள் வாகன தொகுப்பு">Our Fleet</div>
+    <h1 class="section-title" data-en="Choose Your <span class='gold-text'>Perfect Ride</span>" data-ta="உங்கள் <span class='gold-text'>சரியான வாகனத்தை</span> தேர்ந்தெடுங்கள்">Choose Your <span class="gold-text">Perfect Ride</span></h1>
+    <p class="section-desc" style="margin:0 auto;" data-en="Every vehicle comes with an experienced attaching driver. AC &amp; Non-AC available. All vehicles well-maintained." data-ta="ஒவ்வொரு வாகனமும் அனுபவமிக்க ஆக்டிங் ஓட்டுனருடன் வருகிறது. AC மற்றும் AC இல்லாத விருப்பங்கள் கிடைக்கும்.">Every vehicle comes with an experienced attaching driver. AC &amp; Non-AC available. All vehicles well-maintained.</p>
+  </div>
+
+  <div class="cars-grid">
+
+    <!-- WagonR -->
+    <div class="car-card">
+      <div class="car-slider" id="slider-wagonr">
+        <div class="car-slides" id="slides-wagonr">
+          <!-- <div class="car-slide">
+            <div class="car-slide-placeholder">
+              <div class="car-emoji">🚗</div>
+              <div class="placeholder-text">WagonR</div>
+              <div class="img-hint" data-en="Add image here (slot 1 of 5)" data-ta="இங்கே படம் சேர்க்கவும் (1/5)">Add image here (slot 1 of 5)</div>
+            </div>
+          </div> -->
+          <div class="car-slide">
+            <img src="wagonr1.jpg" alt="WagonR">
+            </div>
+          <div class="car-slide">
+            <img src="wagonr2.jpg" alt="WagonR">
+          </div>
+          <div class="car-slide">
+            <img src="wagonr3.jpg" alt="WagonR">
+          </div>
+          </div>
+        <button class="slider-btn prev" onclick="slideChange('wagonr',-1)">‹</button>
+        <button class="slider-btn next" onclick="slideChange('wagonr',1)">›</button>
+        <div class="slider-dots" id="dots-wagonr"></div>
+        <div class="car-badge" data-en="Best Value" data-ta="சிறந்த மதிப்பு">Best Value</div>
+      </div>
+      <div class="car-info">
+        <div class="car-name">WagonR</div>
+        <div class="car-type" data-en="Hatchback · 4–5 Seater" data-ta="ஹேட்ச்பேக் · 4–5 இடங்கள்">Hatchback · 4–5 Seater</div>
+        <div class="car-rate"><div class="car-rate-num">₹14</div><div class="car-rate-unit" data-en="/ km" data-ta="/ கி.மீ">/ km</div></div>
+        <div class="car-features">
+          <div class="car-feat">❄️ <span data-en="AC Available" data-ta="AC கிடைக்கும்">AC Available</span></div>
+          <div class="car-feat">👥 <span data-en="4–5 Seats" data-ta="4–5 இடங்கள்">4–5 Seats</span></div>
+          <div class="car-feat">🧳 <span data-en="2 Bags" data-ta="2 பைகள்">2 Bags</span></div>
+          <div class="car-feat gold">🧑‍✈️ <span data-en="Attaching Driver" data-ta="ஆக்டிங் ஓட்டுனர்">Attaching Driver</span></div>
+        </div>
+        <button class="car-btn" onclick="bookCar('WagonR')" data-en="Book WagonR" data-ta="WagonR பதிவு செய்யுங்கள்">Book WagonR</button>
+      </div>
+    </div>
+
+    <!-- Dzire -->
+    <div class="car-card">
+      <div class="car-slider" id="slider-dzire">
+        <div class="car-slides" id="slides-dzire">
+          <div class="car-slide"><div class="car-slide-placeholder"><div class="car-emoji">🚙</div><div class="placeholder-text">Dzire</div><div class="img-hint" data-en="Add image here (slot 1 of 5)" data-ta="இங்கே படம் சேர்க்கவும் (1/5)">Add image here (slot 1 of 5)</div></div></div>
+          <div class="car-slide"><div class="car-slide-placeholder"><div class="car-emoji">🚙</div><div class="placeholder-text">Dzire</div><div class="img-hint" data-en="Add image here (slot 2 of 5)" data-ta="இங்கே படம் சேர்க்கவும் (2/5)">Add image here (slot 2 of 5)</div></div></div>
+          <div class="car-slide"><div class="car-slide-placeholder"><div class="car-emoji">🚙</div><div class="placeholder-text">Dzire</div><div class="img-hint" data-en="Add image here (slot 3 of 5)" data-ta="இங்கே படம் சேர்க்கவும் (3/5)">Add image here (slot 3 of 5)</div></div></div>
+          <div class="car-slide"><div class="car-slide-placeholder"><div class="car-emoji">🚙</div><div class="placeholder-text">Dzire</div><div class="img-hint" data-en="Add image here (slot 4 of 5)" data-ta="இங்கே படம் சேர்க்கவும் (4/5)">Add image here (slot 4 of 5)</div></div></div>
+          <div class="car-slide"><div class="car-slide-placeholder"><div class="car-emoji">🚙</div><div class="placeholder-text">Dzire</div><div class="img-hint" data-en="Add image here (slot 5 of 5)" data-ta="இங்கே படம் சேர்க்கவும் (5/5)">Add image here (slot 5 of 5)</div></div></div>
+        </div>
+        <button class="slider-btn prev" onclick="slideChange('dzire',-1)">‹</button>
+        <button class="slider-btn next" onclick="slideChange('dzire',1)">›</button>
+        <div class="slider-dots" id="dots-dzire"></div>
+        <div class="car-badge" data-en="Popular" data-ta="பிரபலமானது">Popular</div>
+      </div>
+      <div class="car-info">
+        <div class="car-name">Dzire</div>
+        <div class="car-type" data-en="Sedan · 4–5 Seater" data-ta="செடான் · 4–5 இடங்கள்">Sedan · 4–5 Seater</div>
+        <div class="car-rate"><div class="car-rate-num">₹15</div><div class="car-rate-unit" data-en="/ km" data-ta="/ கி.மீ">/ km</div></div>
+        <div class="car-features">
+          <div class="car-feat">❄️ <span data-en="AC Available" data-ta="AC கிடைக்கும்">AC Available</span></div>
+          <div class="car-feat">👥 <span data-en="4–5 Seats" data-ta="4–5 இடங்கள்">4–5 Seats</span></div>
+          <div class="car-feat">🧳 <span data-en="3 Bags" data-ta="3 பைகள்">3 Bags</span></div>
+          <div class="car-feat gold">🧑‍✈️ <span data-en="Attaching Driver" data-ta="ஆக்டிங் ஓட்டுனர்">Attaching Driver</span></div>
+        </div>
+        <button class="car-btn" onclick="bookCar('Dzire')" data-en="Book Dzire" data-ta="Dzire பதிவு செய்யுங்கள்">Book Dzire</button>
+      </div>
+    </div>
+
+    <!-- Ertiga -->
+    <div class="car-card">
+      <div class="car-slider" id="slider-ertiga">
+        <div class="car-slides" id="slides-ertiga">
+          <div class="car-slide"><div class="car-slide-placeholder"><div class="car-emoji">🚐</div><div class="placeholder-text">Ertiga</div><div class="img-hint" data-en="Add image here (slot 1 of 5)" data-ta="இங்கே படம் சேர்க்கவும் (1/5)">Add image here (slot 1 of 5)</div></div></div>
+          <div class="car-slide"><div class="car-slide-placeholder"><div class="car-emoji">🚐</div><div class="placeholder-text">Ertiga</div><div class="img-hint" data-en="Add image here (slot 2 of 5)" data-ta="இங்கே படம் சேர்க்கவும் (2/5)">Add image here (slot 2 of 5)</div></div></div>
+          <div class="car-slide"><div class="car-slide-placeholder"><div class="car-emoji">🚐</div><div class="placeholder-text">Ertiga</div><div class="img-hint" data-en="Add image here (slot 3 of 5)" data-ta="இங்கே படம் சேர்க்கவும் (3/5)">Add image here (slot 3 of 5)</div></div></div>
+          <div class="car-slide"><div class="car-slide-placeholder"><div class="car-emoji">🚐</div><div class="placeholder-text">Ertiga</div><div class="img-hint" data-en="Add image here (slot 4 of 5)" data-ta="இங்கே படம் சேர்க்கவும் (4/5)">Add image here (slot 4 of 5)</div></div></div>
+          <div class="car-slide"><div class="car-slide-placeholder"><div class="car-emoji">🚐</div><div class="placeholder-text">Ertiga</div><div class="img-hint" data-en="Add image here (slot 5 of 5)" data-ta="இங்கே படம் சேர்க்கவும் (5/5)">Add image here (slot 5 of 5)</div></div></div>
+        </div>
+        <button class="slider-btn prev" onclick="slideChange('ertiga',-1)">‹</button>
+        <button class="slider-btn next" onclick="slideChange('ertiga',1)">›</button>
+        <div class="slider-dots" id="dots-ertiga"></div>
+        <div class="car-badge" data-en="Family Fav" data-ta="குடும்பம் விரும்பும்">Family Fav</div>
+      </div>
+      <div class="car-info">
+        <div class="car-name">Ertiga</div>
+        <div class="car-type" data-en="MPV · 6–7 Seater" data-ta="MPV · 6–7 இடங்கள்">MPV · 6–7 Seater</div>
+        <div class="car-rate"><div class="car-rate-num">₹17.50</div><div class="car-rate-unit" data-en="/ km" data-ta="/ கி.மீ">/ km</div></div>
+        <div class="car-features">
+          <div class="car-feat">❄️ <span data-en="AC Available" data-ta="AC கிடைக்கும்">AC Available</span></div>
+          <div class="car-feat">👥 <span data-en="7 Seats" data-ta="7 இடங்கள்">7 Seats</span></div>
+          <div class="car-feat">🧳 <span data-en="4+ Bags" data-ta="4+ பைகள்">4+ Bags</span></div>
+          <div class="car-feat gold">🧑‍✈️ <span data-en="Attaching Driver" data-ta="ஆக்டிங் ஓட்டுனர்">Attaching Driver</span></div>
+        </div>
+        <button class="car-btn" onclick="bookCar('Ertiga')" data-en="Book Ertiga" data-ta="Ertiga பதிவு செய்யுங்கள்">Book Ertiga</button>
+      </div>
+    </div>
+
+    <!-- Ecco -->
+    <div class="car-card">
+      <div class="car-slider" id="slider-ecco">
+        <div class="car-slides" id="slides-ecco">
+          <div class="car-slide"><div class="car-slide-placeholder"><div class="car-emoji">🚌</div><div class="placeholder-text">Ecco</div><div class="img-hint" data-en="Add image here (slot 1 of 5)" data-ta="இங்கே படம் சேர்க்கவும் (1/5)">Add image here (slot 1 of 5)</div></div></div>
+          <div class="car-slide"><div class="car-slide-placeholder"><div class="car-emoji">🚌</div><div class="placeholder-text">Ecco</div><div class="img-hint" data-en="Add image here (slot 2 of 5)" data-ta="இங்கே படம் சேர்க்கவும் (2/5)">Add image here (slot 2 of 5)</div></div></div>
+          <div class="car-slide"><div class="car-slide-placeholder"><div class="car-emoji">🚌</div><div class="placeholder-text">Ecco</div><div class="img-hint" data-en="Add image here (slot 3 of 5)" data-ta="இங்கே படம் சேர்க்கவும் (3/5)">Add image here (slot 3 of 5)</div></div></div>
+          <div class="car-slide"><div class="car-slide-placeholder"><div class="car-emoji">🚌</div><div class="placeholder-text">Ecco</div><div class="img-hint" data-en="Add image here (slot 4 of 5)" data-ta="இங்கே படம் சேர்க்கவும் (4/5)">Add image here (slot 4 of 5)</div></div></div>
+          <div class="car-slide"><div class="car-slide-placeholder"><div class="car-emoji">🚌</div><div class="placeholder-text">Ecco</div><div class="img-hint" data-en="Add image here (slot 5 of 5)" data-ta="இங்கே படம் சேர்க்கவும் (5/5)">Add image here (slot 5 of 5)</div></div></div>
+        </div>
+        <button class="slider-btn prev" onclick="slideChange('ecco',-1)">‹</button>
+        <button class="slider-btn next" onclick="slideChange('ecco',1)">›</button>
+        <div class="slider-dots" id="dots-ecco"></div>
+        <div class="car-badge" data-en="Group Travel" data-ta="குழு பயணம்">Group Travel</div>
+      </div>
+      <div class="car-info">
+        <div class="car-name">Ecco</div>
+        <div class="car-type" data-en="Van · 8+ Seater" data-ta="வேன் · 8+ இடங்கள்">Van · 8+ Seater</div>
+        <div class="car-rate"><div class="car-rate-num">₹14</div><div class="car-rate-unit" data-en="/ km" data-ta="/ கி.மீ">/ km</div></div>
+        <div class="car-features">
+          <div class="car-feat">❄️ <span data-en="AC Available" data-ta="AC கிடைக்கும்">AC Available</span></div>
+          <div class="car-feat">👥 <span data-en="8+ Seats" data-ta="8+ இடங்கள்">8+ Seats</span></div>
+          <div class="car-feat">🧳 <span data-en="Large Space" data-ta="பெரிய இடம்">Large Space</span></div>
+          <div class="car-feat gold">🧑‍✈️ <span data-en="Attaching Driver" data-ta="ஆக்டிங் ஓட்டுனர்">Attaching Driver</span></div>
+        </div>
+        <button class="car-btn" onclick="bookCar('Ecco')" data-en="Book Ecco" data-ta="Ecco பதிவு செய்யுங்கள்">Book Ecco</button>
+      </div>
+    </div>
+
+  </div><!-- /cars-grid -->
+
+  <div class="extra-services">
+    <div class="extra-card">
+      <div class="extra-info">
+        <h3 data-en="Other Cars &amp; Tempo Services" data-ta="பிற கார்கள் மற்றும் டெம்போ சேவைகள்">Other Cars &amp; Tempo Services</h3>
+        <p data-en="Need a larger vehicle, tempo traveller, or special arrangement? We can arrange any vehicle with an experienced attaching driver based on availability. Both AC and Non-AC available. Prices vary by vehicle and distance." data-ta="பெரிய வாகனம், டெம்போ டிராவலர் அல்லது சிறப்பு ஏற்பாடு வேண்டுமா? கிடைக்கும் தன்மைக்கு ஏற்ப ஏற்பாடு செய்யலாம். AC மற்றும் AC இல்லாத இரண்டும் கிடைக்கும்.">Need a larger vehicle, tempo traveller, or special arrangement? We can arrange any vehicle with an experienced attaching driver based on availability. Both AC and Non-AC available. Prices vary by vehicle and distance.</p>
+      </div>
+      <button class="btn-primary" onclick="showPage('contact')" data-en="Enquire Now" data-ta="இப்போது விசாரிக்கவும்">Enquire Now</button>
+    </div>
+    <div class="extra-card">
+      <div class="extra-info">
+        <h3 data-en="⏱️ Waiting Charges" data-ta="⏱️ காத்திருப்பு கட்டணம்">⏱️ Waiting Charges</h3>
+        <p data-en="If your trip involves waiting time — appointments, shopping, temple visits — a nominal waiting charge applies to compensate our driver's time." data-ta="உங்கள் பயணம் காத்திருக்கும் நேரத்தை உள்ளடக்கியிருந்தால், சாதாரண காத்திருப்பு கட்டணம் பொருந்தும்.">If your trip involves waiting time — appointments, shopping, temple visits — a nominal waiting charge applies to compensate our driver's time.</p>
+      </div>
+      <div class="wait-charge">
+        <div class="wait-charge-num">₹100</div>
+        <div class="wait-charge-label" data-en="Per Hour Waiting" data-ta="ஒரு மணி நேர காத்திருப்பு">Per Hour Waiting</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ BOOKING PAGE ═══════════════════ -->
+<div class="page" id="page-booking">
+  <div class="booking-page">
+    <div class="section-tag" style="justify-content:center;margin-bottom:14px;" data-en="Reservation" data-ta="முன்பதிவு">Reservation</div>
+    <h1 class="booking-title" data-en="Book Your <span class='gold-text'>Ride</span>" data-ta="உங்கள் <span class='gold-text'>பயணத்தை</span> பதிவு செய்யுங்கள்">Book Your <span class="gold-text">Ride</span></h1>
+    <p class="booking-sub" data-en="Fill in the details and we'll confirm your booking promptly." data-ta="விவரங்களை நிரப்பவும், நாங்கள் விரைவில் உறுதிப்படுத்துவோம்.">Fill in the details and we'll confirm your booking promptly.</p>
+
+    <div class="booking-form">
+      <div class="form-section-title">👤 <span data-en="Personal Details" data-ta="தனிப்பட்ட விவரங்கள்">Personal Details</span></div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" data-en="Full Name *" data-ta="முழு பெயர் *">Full Name *</label>
+          <input type="text" class="form-input" id="bk_name" placeholder="Your full name"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-en="Phone Number *" data-ta="தொலைபேசி எண் *">Phone Number *</label>
+          <input type="tel" class="form-input" id="bk_phone" placeholder="Your mobile number"/>
+        </div>
+      </div>
+      <div class="form-row full">
+        <div class="form-group">
+          <label class="form-label" data-en="Email (Optional)" data-ta="மின்னஞ்சல் (விருப்பம்)">Email (Optional)</label>
+          <input type="email" class="form-input" id="bk_email" placeholder="your@email.com"/>
+        </div>
+      </div>
+
+      <div class="form-section-title">🚗 <span data-en="Trip Details" data-ta="பயண விவரங்கள்">Trip Details</span></div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" data-en="Pickup Location *" data-ta="ஏற்று செல்ல இடம் *">Pickup Location *</label>
+          <input type="text" class="form-input" id="bk_pickup" placeholder="e.g. Velur Bus Stand"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-en="Drop Location *" data-ta="இறங்கும் இடம் *">Drop Location *</label>
+          <input type="text" class="form-input" id="bk_drop" placeholder="e.g. Karur Railway Station"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" data-en="Travel Date *" data-ta="பயண தேதி *">Travel Date *</label>
+          <input type="date" class="form-input" id="bk_date"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-en="Pickup Time *" data-ta="எடுத்துச் செல்லும் நேரம் *">Pickup Time *</label>
+          <input type="time" class="form-input" id="bk_time"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" data-en="Car Type *" data-ta="கார் வகை *">Car Type *</label>
+          <select class="form-select" id="bk_car">
+            <option value="">Select a car...</option>
+            <option value="WagonR – ₹14/km">WagonR – ₹14/km</option>
+            <option value="Dzire – ₹15/km">Dzire – ₹15/km</option>
+            <option value="Ertiga – ₹17.50/km">Ertiga – ₹17.50/km</option>
+            <option value="Ecco – ₹14/km">Ecco – ₹14/km</option>
+            <option value="Other / Tempo (on request)">Other / Tempo (on request)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-en="Passengers" data-ta="பயணிகள் எண்ணிக்கை">Passengers</label>
+          <input type="number" class="form-input" id="bk_pax" placeholder="e.g. 4" min="1" max="20"/>
+        </div>
+      </div>
+      <div class="form-row full">
+        <div class="form-group">
+          <label class="form-label" data-en="AC Preference" data-ta="AC விருப்பம்">AC Preference</label>
+          <select class="form-select" id="bk_ac">
+            <option value="AC">AC (Air Conditioned)</option>
+            <option value="Non-AC">Non-AC</option>
+            <option value="No preference">No preference</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row full">
+        <div class="form-group">
+          <label class="form-label" data-en="Additional Notes" data-ta="கூடுதல் குறிப்புகள்">Additional Notes</label>
+          <textarea class="form-textarea" id="bk_notes" placeholder="Any special requirements, luggage info, return trip needed, etc."></textarea>
+        </div>
+      </div>
+
+      <button class="submit-btn" id="submitBtn" onclick="submitBooking()">
+        <span data-en="✨ Confirm Booking" data-ta="✨ முன்பதிவை உறுதிப்படுத்துங்கள்">✨ Confirm Booking</span>
+      </button>
+
+      <div class="booking-note">
+        <span class="note-icon">📌</span>
+        <span data-en="After submitting, booking details are sent to our team via WhatsApp &amp; Email. We will call you to confirm within 30 minutes. Toll charges &amp; waiting charges (₹100/hr) are extra." data-ta="சமர்ப்பித்த பிறகு, முன்பதிவு விவரங்கள் WhatsApp மற்றும் மின்னஞ்சல் மூலம் அனுப்பப்படும். 30 நிமிடங்களில் உறுதிப்படுத்த அழைப்போம். சுங்கக்கட்டணங்கள் மற்றும் காத்திருப்பு கட்டணங்கள் (₹100/மணி) கூடுதல்.">After submitting, booking details are sent to our team via WhatsApp &amp; Email. We will call you to confirm within 30 minutes. Toll charges &amp; waiting charges (₹100/hr) are extra.</span>
+      </div>
+    </div><!-- /booking-form -->
+  </div>
+</div>
+
+<!-- ═══════════════════ CONTACT PAGE ═══════════════════ -->
+<div class="page" id="page-contact">
+  <div class="contact-page">
+    <div class="section-tag" style="justify-content:center;" data-en="Get In Touch" data-ta="தொடர்பு கொள்ளுங்கள்">Get In Touch</div>
+    <h1 class="section-title" style="text-align:center;" data-en="We're Always <span class='gold-text'>Here for You</span>" data-ta="நாங்கள் எப்போதும் <span class='gold-text'>உங்களுக்கு இங்கே</span>">We're Always <span class="gold-text">Here for You</span></h1>
+    <p class="section-desc" style="text-align:center;margin:0 auto 0;" data-en="Call, WhatsApp, or email us. Our team is available 24/7 for any queries or bookings." data-ta="அழைக்கவும், WhatsApp செய்யவும் அல்லது மின்னஞ்சல் செய்யவும். எங்கள் குழு எந்த வினவல்களுக்கும் 24/7 கிடைக்கும்.">Call, WhatsApp, or email us. Our team is available 24/7 for any queries or bookings.</p>
+
+    <div class="contact-grid">
+      <div class="contact-info-card">
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div><div class="contact-label" data-en="Base Location" data-ta="அடிப்படை இடம்">Base Location</div><div class="contact-value" data-en="Velur, Tamil Nadu" data-ta="வேலூர், தமிழ்நாடு">Velur, Tamil Nadu</div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div><div class="contact-label" data-en="Phone Numbers" data-ta="தொலைபேசி எண்கள்">Phone Numbers</div><div class="contact-value"><a href="tel:9025515155">9025515155</a><br/><a href="tel:7339173311">7339173311</a></div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">💬</div>
+          <div><div class="contact-label" data-en="WhatsApp" data-ta="WhatsApp">WhatsApp</div><div class="contact-value"><a href="https://wa.me/918524859711" target="_blank">8524859711</a></div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div><div class="contact-label" data-en="Email" data-ta="மின்னஞ்சல்">Email</div><div class="contact-value"><a href="mailto:varanartheesh@gmail.com">varanartheesh@gmail.com</a></div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🕐</div>
+          <div><div class="contact-label" data-en="Availability" data-ta="கிடைக்கும் நேரம்">Availability</div><div class="contact-value" data-en="24 Hours / 7 Days" data-ta="24 மணி நேரம் / 7 நாட்கள்">24 Hours / 7 Days</div></div>
+        </div>
+        <div class="contact-action-btns">
+          <a href="tel:9025515155" class="btn-contact-action btn-contact-phone">📞 <span data-en="Call Now" data-ta="இப்போது அழைக்கவும்">Call Now</span></a>
+          <a href="https://wa.me/918524859711" target="_blank" class="btn-contact-action btn-contact-wa">💬 WhatsApp</a>
+          <a href="mailto:varanartheesh@gmail.com" class="btn-contact-action btn-contact-email">📧 Email</a>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:18px;">
+        <div class="contact-map-placeholder">
+          <div class="map-icon">🗺️</div>
+          <h3 data-en="Service Coverage" data-ta="சேவை கவரேஜ்">Service Coverage</h3>
+          <p data-en="We operate throughout Tamil Nadu and extend services to Kerala, Karnataka, Andhra Pradesh and Puducherry. Call us for any destination." data-ta="தமிழ்நாடு முழுவதும் மற்றும் கேரளா, கர்நாடகா, ஆந்திரப்பிரதேசம் மற்றும் புதுச்சேரி. எந்த இடத்திற்கும் அழைக்கவும்.">We operate throughout Tamil Nadu and extend services to Kerala, Karnataka, Andhra Pradesh and Puducherry. Call us for any destination.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
+            <div class="state-tag" style="font-size:12px;padding:6px 12px;"><span>🌟</span>Tamil Nadu</div>
+            <div class="state-tag" style="font-size:12px;padding:6px 12px;"><span>🌿</span>Kerala</div>
+            <div class="state-tag" style="font-size:12px;padding:6px 12px;"><span>🏔️</span>Karnataka</div>
+            <div class="state-tag" style="font-size:12px;padding:6px 12px;"><span>🌊</span>Andhra</div>
+            <div class="state-tag" style="font-size:12px;padding:6px 12px;"><span>🏖️</span>Puducherry</div>
+          </div>
+        </div>
+        <div class="contact-since">
+          <p data-en="<strong>Lakshmi Travels</strong> has been operating since <strong>2017</strong>, serving over <strong>5,000+ happy families</strong> across South India with experienced attaching drivers available 24/7 for all vehicles." data-ta="<strong>லக்ஷ்மி டிராவல்ஸ்</strong> <strong>2017</strong> முதல் இயங்கி வருகிறது, தென் இந்தியா முழுவதும் <strong>5,000+ மகிழ்ந்த குடும்பங்களுக்கு</strong> சேவை வழங்கி வருகிறது."><strong>Lakshmi Travels</strong> has been operating since <strong>2017</strong>, serving over <strong>5,000+ happy families</strong> across South India with experienced attaching drivers available 24/7 for all vehicles.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo" data-en="Lakshmi Travels" data-ta="லக்ஷ்மி டிராவல்ஸ்">Lakshmi Travels</div>
+  <div class="footer-tagline" data-en="Premium Car Rentals Since 2017" data-ta="2017 முதல் சிறந்த கார் வாடகை">Premium Car Rentals Since 2017</div>
+  <div class="footer-links">
+    <a href="#" onclick="showPage('home');return false;" data-en="Home" data-ta="முகப்பு">Home</a>
+    <a href="#" onclick="showPage('cars');return false;" data-en="Our Fleet" data-ta="வாகன தொகுப்பு">Our Fleet</a>
+    <a href="#" onclick="showPage('booking');return false;" data-en="Book Now" data-ta="இப்போது பதிவு செய்">Book Now</a>
+    <a href="#" onclick="showPage('contact');return false;" data-en="Contact" data-ta="தொடர்பு">Contact</a>
+    <a href="tel:9025515155">📞 9025515155</a>
+    <a href="tel:7339173311">📞 7339173311</a>
+  </div>
+  <div class="footer-divider"></div>
+  <div class="footer-copy">© 2025 Lakshmi Travels. All rights reserved. Serving South India with pride since 2017.</div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/918524859711" target="_blank" class="float-wa" title="Chat on WhatsApp">💬</a>
+
+<!-- MOBILE BOTTOM NAV -->
+<nav class="mobile-bottom-nav" id="mobileBottomNav">
+  <button class="mbn-btn active" id="mbn-home" onclick="showPage('home')"><span class="mbn-icon">🏠</span><span class="mbn-label" data-en="Home" data-ta="முகப்பு">Home</span></button>
+  <button class="mbn-btn" id="mbn-cars" onclick="showPage('cars')"><span class="mbn-icon">🚗</span><span class="mbn-label" data-en="Fleet" data-ta="வாகனம்">Fleet</span></button>
+  <button class="mbn-btn mbn-book" id="mbn-booking" onclick="showPage('booking')"><span class="mbn-icon">📅</span><span class="mbn-label" data-en="Book" data-ta="பதிவு">Book</span></button>
+  <button class="mbn-btn" id="mbn-contact" onclick="showPage('contact')"><span class="mbn-icon">📞</span><span class="mbn-label" data-en="Contact" data-ta="தொடர்பு">Contact</span></button>
+</nav>
+
+<!-- SUCCESS OVERLAY -->
+<div class="success-overlay" id="successOverlay">
+  <div class="success-box">
+    <div class="success-icon">🎉</div>
+    <h3 data-en="Booking Sent!" data-ta="முன்பதிவு அனுப்பப்பட்டது!">Booking Sent!</h3>
+    <p data-en="Your booking details have been sent to Lakshmi Travels via WhatsApp and Email. Our team will call you to confirm within 30 minutes." data-ta="உங்கள் முன்பதிவு விவரங்கள் WhatsApp மற்றும் மின்னஞ்சல் மூலம் அனுப்பப்பட்டுள்ளன. 30 நிமிடங்களில் உறுதிப்படுத்த அழைப்போம்.">Your booking details have been sent to Lakshmi Travels via WhatsApp and Email. Our team will call you to confirm within 30 minutes.</p>
+    <button class="success-close" onclick="closeSuccess()" data-en="Great, Thank You!" data-ta="நன்றி!">Great, Thank You!</button>
+  </div>
+</div>
+
+<script>
+// ═══ LANGUAGE ═══
+let currentLang = 'en';
+function setLang(lang) {
+  currentLang = lang;
+  document.body.classList.toggle('tamil-mode', lang==='ta');
+  ['btnEn','btnEnM'].forEach(id=>{ const el=document.getElementById(id); if(el){el.classList.toggle('active',lang==='en'); if(el.classList.contains('mobile-lang-btn')){el.style.background=lang==='en'?'linear-gradient(135deg,var(--gold),var(--gold-dark))':'var(--surface2)';el.style.color=lang==='en'?'#fff':'var(--text-muted)';el.style.border=lang==='en'?'none':'1px solid rgba(201,168,76,0.2)';}}});
+  ['btnTa','btnTaM'].forEach(id=>{ const el=document.getElementById(id); if(el){el.classList.toggle('active',lang==='ta'); if(el.classList.contains('mobile-lang-btn')){el.style.background=lang==='ta'?'linear-gradient(135deg,var(--gold),var(--gold-dark))':'var(--surface2)';el.style.color=lang==='ta'?'#fff':'var(--text-muted)';el.style.border=lang==='ta'?'none':'1px solid rgba(201,168,76,0.2)';}}});
+  document.querySelectorAll('[data-en]').forEach(el=>{
+    const val = lang==='ta' ? el.getAttribute('data-ta') : el.getAttribute('data-en');
+    if(!val) return;
+    if(el.tagName==='INPUT'||el.tagName==='TEXTAREA') return;
+    if(el.tagName==='OPTION') el.textContent=val;
+    else el.innerHTML=val;
+  });
+  const ph={bk_name:{en:'Your full name',ta:'உங்கள் முழு பெயர்'},bk_phone:{en:'Your mobile number',ta:'உங்கள் மொபைல் எண்'},bk_email:{en:'your@email.com',ta:'your@email.com'},bk_pickup:{en:'e.g. Velur Bus Stand',ta:'எ.கா. வேலூர் பஸ் நிறுத்தம்'},bk_drop:{en:'e.g. Karur Railway Station',ta:'எ.கா. கரூர் இரயில் நிலையம்'},bk_pax:{en:'e.g. 4',ta:'எ.கா. 4'},bk_notes:{en:'Any special requirements, luggage info, return trip needed, etc.',ta:'சிறப்பு தேவைகள், சாமான் தகவல், திரும்பும் பயணம் தேவையா.'}};
+  Object.entries(ph).forEach(([id,t])=>{ const el=document.getElementById(id); if(el) el.placeholder=t[lang]||t.en; });
+}
+
+// ═══ NAVIGATION ═══
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+name).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  closeMenu();
+  ['home','cars','booking','contact'].forEach(pg=>{
+    const btn=document.getElementById('mbn-'+pg);
+    if(btn) btn.classList.toggle('active',pg===name);
+  });
+}
+function toggleMenu(){ document.getElementById('mobileMenu').classList.toggle('open'); }
+function closeMenu(){ document.getElementById('mobileMenu').classList.remove('open'); }
+
+// ═══ PARTICLES ═══
+(function(){
+  const c=document.getElementById('particles');
+  if(!c) return;
+  for(let i=0;i<18;i++){
+    const s=document.createElement('span');
+    const sz=Math.random()*4+2;
+    s.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;animation-duration:${Math.random()*15+10}s;animation-delay:${Math.random()*10}s;opacity:${Math.random()*0.5+0.2};`;
+    c.appendChild(s);
+  }
+})();
+
+// ═══ SLIDER ═══
+const sliderState = {};
+function initSlider(id, count) {
+  sliderState[id] = { current:0, count };
+  const dotsEl = document.getElementById('dots-'+id);
+  if(!dotsEl) return;
+  dotsEl.innerHTML='';
+  for(let i=0;i<count;i++){
+    const d=document.createElement('button');
+    d.className='slider-dot'+(i===0?' active':'');
+    d.onclick=(()=>{ const idx=i; return ()=>goToSlide(id,idx); })();
+    dotsEl.appendChild(d);
+  }
+}
+function goToSlide(id, idx) {
+  const st=sliderState[id];
+  if(!st) return;
+  st.current=idx;
+  const slides=document.getElementById('slides-'+id);
+  if(slides) slides.style.transform=`translateX(-${idx*100}%)`;
+  const dots=document.querySelectorAll(`#dots-${id} .slider-dot`);
+  dots.forEach((d,i)=>d.classList.toggle('active',i===idx));
+}
+function slideChange(id, dir) {
+  const st=sliderState[id];
+  if(!st) return;
+  goToSlide(id,(st.current+dir+st.count)%st.count);
+}
+
+// ═══ INIT MIN DATE ═══
+(function(){
+  const d=document.getElementById('bk_date');
+  if(d){ d.min=new Date().toISOString().split('T')[0]; d.value=d.min; }
+})();
+
+// ═══ BOOK FROM CARS ═══
+function bookCar(name) {
+  showPage('booking');
+  setTimeout(()=>{
+    const sel=document.getElementById('bk_car');
+    if(!sel) return;
+    for(let i=0;i<sel.options.length;i++){
+      if(sel.options[i].value.includes(name)){ sel.selectedIndex=i; break; }
+    }
+  },200);
+}
+
+// ═══ BOOKING SUBMIT ═══
+function submitBooking() {
+  const v=id=>document.getElementById(id).value.trim();
+  if(!v('bk_name')||!v('bk_phone')||!v('bk_pickup')||!v('bk_drop')||!v('bk_date')||!v('bk_time')||!document.getElementById('bk_car').value) {
+    alert(currentLang==='ta'?'தயவுசெய்து அனைத்து கட்டாய புலங்களையும் (*) நிரப்பவும்.':'Please fill in all required fields (*).');
+    return;
+  }
+  const btn=document.getElementById('submitBtn');
+  btn.disabled=true;
+  btn.innerHTML='<span class="spinner"></span>'+(currentLang==='ta'?'அனுப்புகிறோம்...':'Sending...');
+
+  const msg=`🚗 *NEW BOOKING – Lakshmi Travels*\n\n👤 *Name:* ${v('bk_name')}\n📞 *Phone:* ${v('bk_phone')}${v('bk_email')?'\n📧 *Email:* '+v('bk_email'):''}\n\n📍 *Pickup:* ${v('bk_pickup')}\n🏁 *Drop:* ${v('bk_drop')}\n📅 *Date:* ${v('bk_date')}\n⏰ *Time:* ${v('bk_time')}\n🚗 *Car:* ${document.getElementById('bk_car').value}\n👥 *Passengers:* ${v('bk_pax')||'N/A'}\n❄️ *AC:* ${document.getElementById('bk_ac').value}${v('bk_notes')?'\n📝 *Notes:* '+v('bk_notes'):''}\n\n_Sent via Lakshmi Travels Website_`;
+  window.open('https://wa.me/918524859711?text='+encodeURIComponent(msg),'_blank');
+  setTimeout(()=>{
+    const subj=`New Booking: ${v('bk_name')} – ${v('bk_date')}`;
+    const body=`NEW BOOKING – Lakshmi Travels\n\nName: ${v('bk_name')}\nPhone: ${v('bk_phone')}\nEmail: ${v('bk_email')||'N/A'}\nPickup: ${v('bk_pickup')}\nDrop: ${v('bk_drop')}\nDate: ${v('bk_date')}\nTime: ${v('bk_time')}\nCar: ${document.getElementById('bk_car').value}\nPassengers: ${v('bk_pax')||'N/A'}\nAC: ${document.getElementById('bk_ac').value}\nNotes: ${v('bk_notes')||'None'}`;
+    window.location.href='mailto:varanartheesh@gmail.com?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);
+  },700);
+  setTimeout(()=>{
+    btn.disabled=false;
+    btn.innerHTML=currentLang==='ta'?'✨ முன்பதிவை உறுதிப்படுத்துங்கள்':'✨ Confirm Booking';
+    document.getElementById('successOverlay').classList.add('show');
+    ['bk_name','bk_phone','bk_email','bk_pickup','bk_drop','bk_time','bk_pax','bk_notes'].forEach(id=>{ const el=document.getElementById(id); if(el) el.value=''; });
+    document.getElementById('bk_car').selectedIndex=0;
+    document.getElementById('bk_ac').selectedIndex=0;
+  },1200);
+}
+function closeSuccess(){ document.getElementById('successOverlay').classList.remove('show'); }
+
+// ═══ NAV SCROLL EFFECT ═══
+window.addEventListener('scroll',()=>{
+  document.getElementById('mainNav').style.background=window.scrollY>50?'rgba(10,10,20,0.98)':'rgba(10,10,20,0.92)';
+});
+
+// ═══ INIT ═══
+window.addEventListener('DOMContentLoaded',()=>{
+  ['wagonr','dzire','ertiga','ecco'].forEach(id=>initSlider(id,5));
+  showPage('home');
+  // scroll reveal
+  const obs=new IntersectionObserver(entries=>entries.forEach(e=>{ if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';} }),{threshold:0.1});
+  document.querySelectorAll('.why-card,.car-card,.trip-card,.testi-card').forEach(el=>{ el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.6s ease,transform 0.6s ease';obs.observe(el); });
+});
+</script>
+</body>
+</html>
