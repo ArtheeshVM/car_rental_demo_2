@@ -27,7 +27,22 @@ body.tamil-mode{font-family:'Noto Sans Tamil','Outfit',sans-serif;}
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(10,10,20,0.92);backdrop-filter:blur(18px);border-bottom:1px solid rgba(201,168,76,0.2);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:70px;transition:background .3s;}
 .nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
-.nav-logo-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:var(--shadow-gold);}
+.nav-logo-icon img{
+  width:500px;
+  height:60px;
+  object-fit:contain;
+}
+/* .nav-logo-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:var(--shadow-gold);} */
+.nav-logo-icon{
+  width:50px;
+  height:50px;
+  background:linear-gradient(135deg,var(--gold),var(--gold-dark));
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:var(--shadow-gold);
+}
 .nav-logo-text{display:flex;flex-direction:column;line-height:1.1;}
 .nav-logo-name{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;background:linear-gradient(90deg,var(--gold-light),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .nav-logo-sub{font-size:10px;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;}
@@ -56,6 +71,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(10,10,20,0.
 .page.active{display:block;}
 
 /* ── HERO ── */
+body.tamil-mode .hero-title{
+  font-size:clamp(30px,6vw,65px);
+  line-height:1.2;
+}
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(ellipse at 20% 50%,rgba(201,168,76,0.08) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(46,196,182,0.05) 0%,transparent 50%),var(--deep);padding:0 24px;}
 .hero-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
 .hero-particles span{position:absolute;border-radius:50%;background:rgba(201,168,76,0.4);animation:float-part linear infinite;}
@@ -289,7 +308,13 @@ footer{background:var(--deep2);border-top:1px solid rgba(201,168,76,0.15);paddin
   nav{padding:0 14px;height:60px;}
   .nav-links,.btn-book-nav{display:none;}
   .hamburger{display:flex;}
+  .nav-logo-icon img{
+  width:500px;
+  height:40px;
+  object-fit:contain;
+}
   .nav-logo-icon{width:36px;height:36px;font-size:16px;}
+
   .nav-logo-name{font-size:15px;}
   .nav-logo-sub{font-size:9px;}
   .lang-toggle{padding:3px;}
@@ -308,6 +333,9 @@ footer{background:var(--deep2);border-top:1px solid rgba(201,168,76,0.15);paddin
   .hero-stat-num{font-size:clamp(22px,6vw,32px);}
   .hero-stat-label{font-size:9px;letter-spacing:1px;}
   .hero-scroll{display:none;}
+  body.tamil-mode .hero-title{
+  font-size:clamp(24px,7vw,36px);
+}
   /* driver strip */
   .driver-strip{padding:18px 14px;}
   .driver-strip-inner{gap:14px;}
@@ -389,15 +417,25 @@ footer{background:var(--deep2);border-top:1px solid rgba(201,168,76,0.15);paddin
 <!-- NAV -->
 <nav id="mainNav">
   <a class="nav-logo" href="#" onclick="showPage('home');return false;">
-    <div class="nav-logo-icon">🚗</div>
-    <div class="nav-logo-text">
-      <span class="nav-logo-name" data-en="Lakshmi Travels" data-ta="லக்ஷ்மி டிராவல்ஸ்">Lakshmi Travels</span>
-      <span class="nav-logo-sub" data-en="Since 2017" data-ta="2017 முதல்">Since 2017</span>
-    </div>
-  </a>
+  
+  <div class="nav-logo-icon">
+    <img src="logo_LT.png" alt="Lakshmi Travels Logo">
+  </div>
+
+  <div class="nav-logo-text">
+    <span class="nav-logo-name" data-en="Lakshmi Travels" data-ta="லட்சுமி டிராவல்ஸ்">
+      Lakshmi Travels
+    </span>
+
+    <span class="nav-logo-sub" data-en="Since 2017" data-ta="2017 முதல்">
+      Since 2017
+    </span>
+  </div>
+
+</a>
   <div class="nav-links">
     <a href="#" onclick="showPage('home');return false;" data-en="Home" data-ta="முகப்பு">Home</a>
-    <a href="#" onclick="showPage('cars');return false;" data-en="Our Fleet" data-ta="வாகன தொகுப்பு">Our Fleet</a>
+    <a href="#" onclick="showPage('cars');return false;" data-en="Our Fleet" data-ta="வாகன தொகுப்பு">Our Cars</a>
     <a href="#" onclick="showPage('booking');return false;" data-en="Book Now" data-ta="இப்போது பதிவு செய்">Book Now</a>
     <a href="#" onclick="showPage('contact');return false;" data-en="Contact" data-ta="தொடர்பு">Contact</a>
   </div>
@@ -416,7 +454,7 @@ footer{background:var(--deep2);border-top:1px solid rgba(201,168,76,0.15);paddin
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="#" onclick="showPage('home');closeMenu();return false;" data-en="🏠  Home" data-ta="🏠  முகப்பு">🏠  Home</a>
-  <a href="#" onclick="showPage('cars');closeMenu();return false;" data-en="🚗  Our Fleet" data-ta="🚗  வாகன தொகுப்பு">🚗  Our Fleet</a>
+  <a href="#" onclick="showPage('cars');closeMenu();return false;" data-en="🚗  Our Fleet" data-ta="🚗  வாகன தொகுப்பு">🚗  Our Cars</a>
   <a href="#" onclick="showPage('booking');closeMenu();return false;" data-en="📅  Book Now" data-ta="📅  இப்போது பதிவு செய்">📅  Book Now</a>
   <a href="#" onclick="showPage('contact');closeMenu();return false;" data-en="📞  Contact" data-ta="📞  தொடர்பு">📞  Contact</a>
   <div class="mobile-lang-row">
@@ -436,12 +474,30 @@ footer{background:var(--deep2);border-top:1px solid rgba(201,168,76,0.15);paddin
         <span class="dot"></span>
         <span data-en="Trusted Since 2017 · 5000+ Happy Families" data-ta="2017 முதல் நம்பகமானது · 5000+ மகிழ்ந்த குடும்பங்கள்">Trusted Since 2017 · 5000+ Happy Families</span>
       </div>
-      <div class="hero-title" data-en="Lakshmi Travels" data-ta="லக்ஷ்மி டிராவல்ஸ்">Lakshmi Travels</div>
-      <div class="hero-title-sub" data-en="Your Journey, Our Pride" data-ta="உங்கள் பயணம், எங்கள் பெருமை">Your Journey, Our Pride</div>
+      <div class="hero-title" data-en="Lakshmi Travels" data-ta="லட்சுமி டிராவல்ஸ்">Lakshmi Travels</div>
+      <!-- <div style="font-size: 28px;padding-bottom: 0px;margin-bottom: 0px;" class="hero-title-sub" data-en="Your Journey, Our Pride" data-ta="உங்கள் பயணம், எங்கள் பெருமை">P.Velur, Namakkal</div>
+      <div style="padding: 0;margin-bottom: 0px;" class="hero-title-sub" data-en="Your Journey, Our Pride" data-ta="உங்கள் பயணம், எங்கள் பெருமை">Your Journey, Our Pride</div> -->
+      <!-- <div class="hero-title"
+     data-en="Lakshmi Travels"
+     data-ta="லட்சுமி டிராவல்ஸ்">
+Lakshmi Travels
+</div> -->
+
+<div class="hero-location"
+     data-en="P.Velur, Namakkal"
+     data-ta="ப.வேலூர், நாமக்கல் - 638182">
+P.Velur, Namakkal - 638182
+</div>
+
+<div class="hero-title-sub"
+     data-en="Your Journey, Our Pride"
+     data-ta="உங்கள் பயணம், எங்கள் பெருமை">
+Your Journey, Our Pride
+</div>
       <p class="hero-desc" data-en="Trusted by 5000+ happy families since 2017. Attaching drivers available 24/7 for all vehicles — experienced, reliable & always on time. Covering Tamil Nadu, Kerala, Karnataka, Andhra &amp; Puducherry." data-ta="2017 முதல் 5000+ மகிழ்ந்த குடும்பங்களால் நம்பகமானது. அனைத்து வாகனங்களுக்கும் 24/7 ஆக்டிங் ஓட்டுனர்கள் கிடைக்கும். தமிழ்நாடு, கேரளா, கர்நாடகா, ஆந்திரா மற்றும் புதுச்சேரி.">Trusted by 5000+ happy families since 2017. Attaching drivers available 24/7 for all vehicles — experienced, reliable &amp; always on time. Covering Tamil Nadu, Kerala, Karnataka, Andhra &amp; Puducherry.</p>
       <div class="hero-btns">
         <button class="btn-primary" onclick="showPage('booking')" data-en="Book Your Ride" data-ta="உங்கள் பயணத்தை பதிவு செய்யுங்கள்">Book Your Ride</button>
-        <button class="btn-secondary" onclick="showPage('cars')" data-en="Explore Fleet" data-ta="வாகனங்களை காண்க">Explore Fleet</button>
+        <button class="btn-secondary" onclick="showPage('cars')" data-en="Explore Fleet" data-ta="வாகனங்களை காண்க">Explore Cars</button>
       </div>
       <div class="hero-stats">
         <div class="hero-stat"><div class="hero-stat-num">5000+</div><div class="hero-stat-label" data-en="Happy Families" data-ta="மகிழ்ந்த குடும்பங்கள்">Happy Families</div></div>
@@ -529,7 +585,7 @@ footer{background:var(--deep2);border-top:1px solid rgba(201,168,76,0.15);paddin
       <h2 class="section-title" data-en="What Our <span class='gold-text'>Families Say</span>" data-ta="எங்கள் <span class='gold-text'>குடும்பங்கள்</span> என்ன சொல்கிறார்கள்">What Our <span class="gold-text">Families Say</span></h2>
       <div class="testi-grid">
         <div class="testi-card"><div class="quote-mark">"</div><div class="testi-stars">★★★★★</div><p class="testi-text" data-en='"Very professional service! Driver was on time, car was clean and AC was excellent. Traveled from Velur to Coimbatore without any issues."' data-ta='"மிகவும் தொழில்முறை சேவை! ஓட்டுனர் சரியான நேரத்தில் வந்தார், கார் சுத்தமாக இருந்தது. வேலூரிலிருந்து கோயம்புத்தூர் வரை சிறப்பாக பயணித்தோம்."'>"Very professional service! Driver was on time, car was clean and AC was excellent. Traveled from Velur to Coimbatore without any issues."</p><div class="testi-author"><div class="testi-avatar">R</div><div><div class="testi-name">Rajesh Kumar</div><div class="testi-loc" data-en="Velur, Tamil Nadu" data-ta="வேலூர், தமிழ்நாடு">Velur, Tamil Nadu</div></div></div></div>
-        <div class="testi-card"><div class="quote-mark">"</div><div class="testi-stars">★★★★★</div><p class="testi-text" data-en='"Used Lakshmi Travels for our family trip to Ooty. The driver was very careful and courteous. Will definitely use again!"' data-ta='"ஊட்டிக்கு எங்கள் குடும்பப் பயணத்திற்கு லக்ஷ்மி டிராவல்ஸை பயன்படுத்தினோம். மிகவும் சிறப்பான சேவை. மீண்டும் நிச்சயமாக பயன்படுத்துவோம்!"'>"Used Lakshmi Travels for our family trip to Ooty. The driver was very careful and courteous. Will definitely use again!"</p><div class="testi-author"><div class="testi-avatar">P</div><div><div class="testi-name">Priya Suresh</div><div class="testi-loc" data-en="Namakkal, Tamil Nadu" data-ta="நாமக்கல், தமிழ்நாடு">Namakkal, Tamil Nadu</div></div></div></div>
+        <div class="testi-card"><div class="quote-mark">"</div><div class="testi-stars">★★★★★</div><p class="testi-text" data-en='"Used Lakshmi Travels for our family trip to Ooty. The driver was very careful and courteous. Will definitely use again!"' data-ta='"ஊட்டிக்கு எங்கள் குடும்பப் பயணத்திற்கு லட்சுமி டிராவல்ஸை பயன்படுத்தினோம். மிகவும் சிறப்பான சேவை. மீண்டும் நிச்சயமாக பயன்படுத்துவோம்!"'>"Used Lakshmi Travels for our family trip to Ooty. The driver was very careful and courteous. Will definitely use again!"</p><div class="testi-author"><div class="testi-avatar">P</div><div><div class="testi-name">Priya Suresh</div><div class="testi-loc" data-en="Namakkal, Tamil Nadu" data-ta="நாமக்கல், தமிழ்நாடு">Namakkal, Tamil Nadu</div></div></div></div>
         <div class="testi-card"><div class="quote-mark">"</div><div class="testi-stars">★★★★★</div><p class="testi-text" data-en='"Best cab service in the area. Booked an Ertiga for 8 of us, very comfortable ride to Madurai. Price was fair and driver was excellent."' data-ta='"பகுதியில் சிறந்த டாக்சி சேவை. எங்கள் 8 பேருக்கு எர்டிகாவை பதிவு செய்தோம். விலை நியாயமாக இருந்தது."'>"Best cab service in the area. Booked an Ertiga for 8 of us, very comfortable ride to Madurai. Price was fair and driver was excellent."</p><div class="testi-author"><div class="testi-avatar">M</div><div><div class="testi-name">Murugan Pillai</div><div class="testi-loc" data-en="Karur, Tamil Nadu" data-ta="கரூர், தமிழ்நாடு">Karur, Tamil Nadu</div></div></div></div>
       </div>
     </div>
@@ -542,7 +598,7 @@ footer{background:var(--deep2);border-top:1px solid rgba(201,168,76,0.15);paddin
     <div class="cta-btns">
       <a href="tel:9025515155" class="btn-call">📞 9025515155</a>
       <a href="tel:7339173311" class="btn-call">📞 7339173311</a>
-      <a href="https://wa.me/918524859711" target="_blank" class="btn-whatsapp">💬 <span data-en="WhatsApp Us" data-ta="WhatsApp செய்யுங்கள்">WhatsApp Us</span></a>
+      <a href="https://wa.me/919025515155" target="_blank" class="btn-whatsapp">💬 <span data-en="WhatsApp Us" data-ta="WhatsApp செய்யுங்கள்">WhatsApp Us</span></a>
     </div>
   </div>
 </div>
@@ -550,7 +606,7 @@ footer{background:var(--deep2);border-top:1px solid rgba(201,168,76,0.15);paddin
 <!-- ═══════════════════ CARS PAGE ═══════════════════ -->
 <div class="page" id="page-cars">
   <div class="cars-hero">
-    <div class="section-tag" style="justify-content:center;" data-en="Our Fleet" data-ta="எங்கள் வாகன தொகுப்பு">Our Fleet</div>
+    <div class="section-tag" style="justify-content:center;" data-en="Our Fleet" data-ta="எங்கள் வாகன தொகுப்பு">Our Cars</div>
     <h1 class="section-title" data-en="Choose Your <span class='gold-text'>Perfect Ride</span>" data-ta="உங்கள் <span class='gold-text'>சரியான வாகனத்தை</span> தேர்ந்தெடுங்கள்">Choose Your <span class="gold-text">Perfect Ride</span></h1>
     <p class="section-desc" style="margin:0 auto;" data-en="Every vehicle comes with an experienced attaching driver. AC &amp; Non-AC available. All vehicles well-maintained." data-ta="ஒவ்வொரு வாகனமும் அனுபவமிக்க ஆக்டிங் ஓட்டுனருடன் வருகிறது. AC மற்றும் AC இல்லாத விருப்பங்கள் கிடைக்கும்.">Every vehicle comes with an experienced attaching driver. AC &amp; Non-AC available. All vehicles well-maintained.</p>
   </div>
@@ -850,7 +906,7 @@ footer{background:var(--deep2);border-top:1px solid rgba(201,168,76,0.15);paddin
           </div>
         </div>
         <div class="contact-since">
-          <p data-en="<strong>Lakshmi Travels</strong> has been operating since <strong>2017</strong>, serving over <strong>5,000+ happy families</strong> across South India with experienced attaching drivers available 24/7 for all vehicles." data-ta="<strong>லக்ஷ்மி டிராவல்ஸ்</strong> <strong>2017</strong> முதல் இயங்கி வருகிறது, தென் இந்தியா முழுவதும் <strong>5,000+ மகிழ்ந்த குடும்பங்களுக்கு</strong> சேவை வழங்கி வருகிறது."><strong>Lakshmi Travels</strong> has been operating since <strong>2017</strong>, serving over <strong>5,000+ happy families</strong> across South India with experienced attaching drivers available 24/7 for all vehicles.</p>
+          <p data-en="<strong>Lakshmi Travels</strong> has been operating since <strong>2017</strong>, serving over <strong>5,000+ happy families</strong> across South India with experienced attaching drivers available 24/7 for all vehicles." data-ta="<strong>லட்சுமி டிராவல்ஸ்</strong> <strong>2017</strong> முதல் இயங்கி வருகிறது, தென் இந்தியா முழுவதும் <strong>5,000+ மகிழ்ந்த குடும்பங்களுக்கு</strong> சேவை வழங்கி வருகிறது."><strong>Lakshmi Travels</strong> has been operating since <strong>2017</strong>, serving over <strong>5,000+ happy families</strong> across South India with experienced attaching drivers available 24/7 for all vehicles.</p>
         </div>
       </div>
     </div>
@@ -859,7 +915,7 @@ footer{background:var(--deep2);border-top:1px solid rgba(201,168,76,0.15);paddin
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo" data-en="Lakshmi Travels" data-ta="லக்ஷ்மி டிராவல்ஸ்">Lakshmi Travels</div>
+  <div class="footer-logo" data-en="Lakshmi Travels" data-ta="லட்சுமி டிராவல்ஸ்">Lakshmi Travels</div>
   <div class="footer-tagline" data-en="Premium Car Rentals Since 2017" data-ta="2017 முதல் சிறந்த கார் வாடகை">Premium Car Rentals Since 2017</div>
   <div class="footer-links">
     <a href="#" onclick="showPage('home');return false;" data-en="Home" data-ta="முகப்பு">Home</a>
@@ -874,7 +930,7 @@ footer{background:var(--deep2);border-top:1px solid rgba(201,168,76,0.15);paddin
 </footer>
 
 <!-- FLOATING WHATSAPP -->
-<a href="https://wa.me/918524859711" target="_blank" class="float-wa" title="Chat on WhatsApp">💬</a>
+<a href="https://wa.me/919025515155" target="_blank" class="float-wa" title="Chat on WhatsApp">💬</a>
 
 <!-- MOBILE BOTTOM NAV -->
 <nav class="mobile-bottom-nav" id="mobileBottomNav">
@@ -889,7 +945,7 @@ footer{background:var(--deep2);border-top:1px solid rgba(201,168,76,0.15);paddin
   <div class="success-box">
     <div class="success-icon">🎉</div>
     <h3 data-en="Booking Sent!" data-ta="முன்பதிவு அனுப்பப்பட்டது!">Booking Sent!</h3>
-    <p data-en="Your booking details have been sent to Lakshmi Travels via WhatsApp and Email. Our team will call you to confirm within 30 minutes." data-ta="உங்கள் முன்பதிவு விவரங்கள் WhatsApp மற்றும் மின்னஞ்சல் மூலம் அனுப்பப்பட்டுள்ளன. 30 நிமிடங்களில் உறுதிப்படுத்த அழைப்போம்.">Your booking details have been sent to Lakshmi Travels via WhatsApp and Email. Our team will call you to confirm within 30 minutes.</p>
+    <p data-en="Your booking details have been sent to Lakshmi Travels via WhatsApp. Our team will call you to confirm within 30 minutes." data-ta="உங்கள் முன்பதிவு விவரங்கள் WhatsApp மூலம் அனுப்பப்பட்டுள்ளன. 30 நிமிடங்களில் உறுதிப்படுத்த அழைப்போம்.">Your booking details have been sent to Lakshmi Travels via WhatsApp. Our team will call you to confirm within 30 minutes.</p>
     <button class="success-close" onclick="closeSuccess()" data-en="Great, Thank You!" data-ta="நன்றி!">Great, Thank You!</button>
   </div>
 </div>
@@ -997,12 +1053,12 @@ function submitBooking() {
   btn.disabled=true;
   btn.innerHTML='<span class="spinner"></span>'+(currentLang==='ta'?'அனுப்புகிறோம்...':'Sending...');
 
-  const msg=`🚗 *NEW BOOKING – Lakshmi Travels*\n\n👤 *Name:* ${v('bk_name')}\n📞 *Phone:* ${v('bk_phone')}${v('bk_email')?'\n📧 *Email:* '+v('bk_email'):''}\n\n📍 *Pickup:* ${v('bk_pickup')}\n🏁 *Drop:* ${v('bk_drop')}\n📅 *Date:* ${v('bk_date')}\n⏰ *Time:* ${v('bk_time')}\n🚗 *Car:* ${document.getElementById('bk_car').value}\n👥 *Passengers:* ${v('bk_pax')||'N/A'}\n❄️ *AC:* ${document.getElementById('bk_ac').value}${v('bk_notes')?'\n📝 *Notes:* '+v('bk_notes'):''}\n\n_Sent via Lakshmi Travels Website_`;
-  window.open('https://wa.me/918524859711?text='+encodeURIComponent(msg),'_blank');
+  const msg=`🚗 *NEW BOOKING – Lakshmi Travels*\n\n👤 *Name:* ${v('bk_name')}\n📞 *Phone:* ${v('bk_phone')}${v('bk_email')?'\n📧 *Email:* '+v('bk_email'):''}\n\n📍 *Pickup:* ${v('bk_pickup')}\n🏁 *Drop:* ${v('bk_drop')}\n📅 *Date:* ${v('bk_date')}\n⏰ *Time:* ${v('bk_time')}\n🚗 *Car:* ${document.getElementById('bk_car').value}\n👥 *Passengers:* ${v('bk_pax')||'N/A'}\n❄️ *AC:* ${document.getElementById('bk_ac').value}${v('bk_notes')?'\n📝 *Notes:* '+v('bk_notes'):''}\n\n_Sent via Lakshmi Travels Website P.Velur (Our team will contact you within 30 minutes)_`;
+  window.open('https://wa.me/919025515155?text='+encodeURIComponent(msg),'_blank');
   setTimeout(()=>{
     const subj=`New Booking: ${v('bk_name')} – ${v('bk_date')}`;
     const body=`NEW BOOKING – Lakshmi Travels\n\nName: ${v('bk_name')}\nPhone: ${v('bk_phone')}\nEmail: ${v('bk_email')||'N/A'}\nPickup: ${v('bk_pickup')}\nDrop: ${v('bk_drop')}\nDate: ${v('bk_date')}\nTime: ${v('bk_time')}\nCar: ${document.getElementById('bk_car').value}\nPassengers: ${v('bk_pax')||'N/A'}\nAC: ${document.getElementById('bk_ac').value}\nNotes: ${v('bk_notes')||'None'}`;
-    window.location.href='mailto:varanartheesh@gmail.com?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);
+    // window.location.href='mailto:varanartheesh@gmail.com?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);
   },700);
   setTimeout(()=>{
     btn.disabled=false;
